@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gem Gladiator Unity Project.Plugins", "Gem Gladiator Unity Project.Plugins.csproj", "{F5D6915A-72FF-D313-0DC3-6797CA47D596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gem Gladiator Unity Project", "Gem Gladiator Unity Project.csproj", "{41E40746-5308-DF18-F24D-D3001915F674}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gem Gladiator Unity Project.Editor.Plugins", "Gem Gladiator Unity Project.Editor.Plugins.csproj", "{81366F8E-04DF-3201-73E1-9E5FA8E1FE29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gem Gladiator Unity Project.Editor", "Gem Gladiator Unity Project.Editor.csproj", "{D590B541-0B5F-7B2D-FB08-98086948EC45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5D6915A-72FF-D313-0DC3-6797CA47D596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5D6915A-72FF-D313-0DC3-6797CA47D596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5D6915A-72FF-D313-0DC3-6797CA47D596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5D6915A-72FF-D313-0DC3-6797CA47D596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E40746-5308-DF18-F24D-D3001915F674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E40746-5308-DF18-F24D-D3001915F674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E40746-5308-DF18-F24D-D3001915F674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E40746-5308-DF18-F24D-D3001915F674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81366F8E-04DF-3201-73E1-9E5FA8E1FE29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81366F8E-04DF-3201-73E1-9E5FA8E1FE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81366F8E-04DF-3201-73E1-9E5FA8E1FE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81366F8E-04DF-3201-73E1-9E5FA8E1FE29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D590B541-0B5F-7B2D-FB08-98086948EC45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D590B541-0B5F-7B2D-FB08-98086948EC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D590B541-0B5F-7B2D-FB08-98086948EC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D590B541-0B5F-7B2D-FB08-98086948EC45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
