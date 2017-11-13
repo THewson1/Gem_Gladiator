@@ -37,33 +37,42 @@ public class PlayerInput : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        float h;
-        float v;
+        float h = 0;
+        float v = 0;
 
-        h = m_usersController.LeftStickX;
-        v = m_usersController.LeftStickY;
-
-        if (m_dodging == 0 && m_usersController.Action2.WasPressed)
+        switch(InputManager.Devices.Count)
         {
-            m_dodging = 1;
-            Invoke("CoolDownDodge", m_dodgeCooldown);
-        }
+            case (0):
+                //keyboard controls
+                CheckKeyboardControls(out h, out v);
+                break;
 
-#if UNITY_EDITOR
-            
-        if (InputManager.Devices.Count == 0)
-        {
-            h = ((Input.GetKey(KeyCode.A)? -1:0) - (Input.GetKey(KeyCode.D) ? -1 : 0));
-            v = ((Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0));
+            case (1):
+                GameController Gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+                //if singlePlayer
+                if (Gc.m_amountOfPlayers == 1)
+                {
+                    CheckControllerControls(out h, out v);
+                }
 
-            if (m_dodging == 0 && Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                m_dodging = 1;
-                Invoke("CoolDownDodge", m_dodgeCooldown);
-            }
-        }
-            
-#endif
+                //if multiPlayer
+                if (Gc.m_amountOfPlayers > 1)
+                {
+                    if (m_playerNumber == 0)
+                    {
+                        CheckKeyboardControls(out h, out v);
+                    }
+                    else
+                    {
+                        CheckControllerControls(out h, out v);
+                    }
+                }
+                break;
+
+            case (2):
+                CheckControllerControls(out h, out v);
+                break;
+        }     
 
         // we use world-relative directions in the case of no main camera
         m_move = new Vector3(-h, 0, -v);
@@ -75,6 +84,30 @@ public class PlayerInput : MonoBehaviour {
     void CoolDownDodge()
     {
         m_dodging = 0;
+    }
+
+    void CheckKeyboardControls (out float h, out float v)
+    {
+        h = ((Input.GetKey(KeyCode.A) ? -1 : 0) - (Input.GetKey(KeyCode.D) ? -1 : 0));
+        v = ((Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0));
+
+        if (m_dodging == 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            m_dodging = 1;
+            Invoke("CoolDownDodge", m_dodgeCooldown);
+        }
+    }
+
+    void CheckControllerControls(out float h, out float v)
+    {
+        h = m_usersController.LeftStickX;
+        v = m_usersController.LeftStickY;
+
+        if (m_dodging == 0 && m_usersController.Action2.WasPressed)
+        {
+            m_dodging = 1;
+            Invoke("CoolDownDodge", m_dodgeCooldown);
+        }
     }
 
 }

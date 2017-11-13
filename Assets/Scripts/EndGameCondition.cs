@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using System;
 
@@ -56,12 +58,13 @@ public class EndGameCondition : MonoBehaviour {
 
         if (gameOver)
         {
-            //show game over screen
+            //show game over screen (display game over GUI)
             Debug.Log("GameOver");
         }
 	}
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(EndGameCondition))]
 public class EndGameConditionEditor : Editor
 {
@@ -76,4 +79,4 @@ public class EndGameConditionEditor : Editor
 
     }
 }
-
+#endif
