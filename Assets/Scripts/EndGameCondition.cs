@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEditor;
-#endif
+//#endif
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class EndGameCondition : MonoBehaviour {
 
@@ -12,15 +13,21 @@ public class EndGameCondition : MonoBehaviour {
     public bool m_coop;
     public bool m_versus;
 
-    public int m_gameMode;
+    private int m_gameMode;
     private GameObject[] m_players;
 	
     void Start ()
     {
+        if (m_singlePlayer)
+            m_gameMode = 1;
+        if (m_coop)
+            m_gameMode = 2;
+        if (m_versus)
+            m_gameMode = 3;
         m_players = GameObject.FindGameObjectsWithTag("Player");
     }
 
-	void Update () {
+    void Update () {
         bool gameOver = false;
 		switch(m_gameMode)
         {
@@ -34,13 +41,15 @@ public class EndGameCondition : MonoBehaviour {
             break;
             //co-op
             case (2):
+                gameOver = true;
                 foreach (GameObject player in m_players)
                 {
                     PlayerDeathLogic playerDeathLogic = player.GetComponent<PlayerDeathLogic>();
-                    if (playerDeathLogic.m_lives <= 0)
-                        gameOver = true;
                     if (playerDeathLogic.m_lives > 0)
+                    {
                         gameOver = false;
+                        break;
+                    }
                 }
                 break;
             //verses
@@ -60,23 +69,7 @@ public class EndGameCondition : MonoBehaviour {
         {
             //show game over screen (display game over GUI)
             Debug.Log("GameOver");
+            SceneManager.LoadScene(0); // this is temp
         }
 	}
 }
-
-#if UNITY_EDITOR
-[CustomEditor(typeof(EndGameCondition))]
-public class EndGameConditionEditor : Editor
-{
-    override public void OnInspectorGUI()
-    {
-        var myScript = target as EndGameCondition;
-
-        EditorGUILayout.TextArea("Please Only Pick One From Below");
-        myScript.m_singlePlayer = EditorGUILayout.Toggle("Single Player", myScript.m_singlePlayer);
-        myScript.m_coop = EditorGUILayout.Toggle("Co-op", myScript.m_coop);
-        myScript.m_versus = EditorGUILayout.Toggle("Versus", myScript.m_versus);
-
-    }
-}
-#endif

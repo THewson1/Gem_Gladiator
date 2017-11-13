@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using InControl;
+using UnityEngine.UI;
 
 public class ControllerMenuSupport : MonoBehaviour {
 
@@ -44,9 +45,13 @@ public class ControllerMenuSupport : MonoBehaviour {
             // select
             if (m_usersController.Action1.WasReleased)
             {
+                Button btn = m_buttons[m_currentButton].GetComponent<Button>();
+                btn.onClick.Invoke();
+                /*
                 UI_Change_Test uI;
                 if (uI = m_buttons[m_currentButton].GetComponent<UI_Change_Test>())
                     uI.ChangeUI();
+                    */
             }
         }
         if (InputManager.Devices.Count > 0)

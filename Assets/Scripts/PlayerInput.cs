@@ -64,12 +64,14 @@ public class PlayerInput : MonoBehaviour {
                     }
                     else
                     {
+                        m_usersController = InputManager.Devices[m_playerNumber - 1];
                         CheckControllerControls(out h, out v);
                     }
                 }
                 break;
 
             case (2):
+                m_usersController = InputManager.Devices[m_playerNumber];
                 CheckControllerControls(out h, out v);
                 break;
         }     

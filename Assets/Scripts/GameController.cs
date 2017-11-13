@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject m_playerPrefab;
-    [Range(1, 4)] public int m_amountOfPlayers = 1;
+    [Range(1, 2)] public int m_amountOfPlayers = 1;
 
     public Vector3 m_playerSpawnOffset;
 
@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
     [HideInInspector] public List<GameObject> m_listOfPlayers = new List<GameObject>();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         //create the correct amount of players at the start of the game
 
 		for (int i = 0; i < m_amountOfPlayers; i++)
