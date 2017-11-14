@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: cb58ca5afae10164a969ecceb33fab1e
+timeCreated: 1510629025
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Body_CTRL
+    100002: Body_CTRL_GRP
+    100004: Chest_CTRL
+    100006: Chest_CTRL_GRP
+    100008: Chest_JNT
+    100010: gladiator_lowpoly:Mesh
+    100012: Global_CTRL
+    100014: Global_CTRL_GRP
+    100016: Head_CTRL
+    100018: Head_CTRL_GRP
+    100020: Head_JNT
+    100022: Head_JNT_END
+    100024: L_Ankle_JNT
+    100026: L_Elbow_CTRL
+    100028: L_Elbow_CTRL_GRP
+    100030: L_Elbow_JNT
+    100032: L_Fingers_JNT_END
+    100034: L_Foot_CTRL
+    100036: L_Foot_CTRL_GRP
+    100038: L_Foot_IK
+    100040: L_Knee_JNT
+    100042: L_Knee_LOC
+    100044: L_Knee_LOC_CTRL
+    100046: L_Knee_LOC_CTRL_GRP
+    100048: L_Leg_IK
+    100050: L_Shoulder_CTRL
+    100052: L_Shoulder_CTRL_GRP
+    100054: L_Shoulder_JNT
+    100056: L_Thigh_JNT
+    100058: L_Toe_JNT_END
+    100060: L_Wrist_CTRL
+    100062: L_Wrist_CTRL_GRP
+    100064: L_Wrist_JNT
+    100066: Neck_CTRL
+    100068: Neck_CTRL_GRP
+    100070: Neck_JNT
+    100072: R_Ankle_JNT
+    100074: R_Elbow_CTRL
+    100076: R_Elbow_CTRL_GRP
+    100078: R_Elbow_JNT
+    100080: R_Fingers_JNT_END
+    100082: R_Foot_CTRL
+    100084: R_Foot_CTRL_GRP
+    100086: R_Foot_IK
+    100088: R_Knee_JNT
+    100090: R_Knee_LOC
+    100092: R_Knee_LOC_CTRL
+    100094: R_Knee_LOC_CTRL_GRP
+    100096: R_Leg_IK
+    100098: R_Shoulder_CTRL
+    100100: R_Shoulder_CTRL_GRP
+    100102: R_Shoulder_JNT
+    100104: R_Thigh_JNT
+    100106: R_Toe_JNT_END
+    100108: R_Wrist_CTRL
+    100110: R_Wrist_CTRL_GRP
+    100112: R_Wrist_JNT
+    100114: Root_CTRL
+    100116: Root_CTRL_GRP
+    100118: Root_JNT
+    100120: //RootNode
+    400000: Body_CTRL
+    400002: Body_CTRL_GRP
+    400004: Chest_CTRL
+    400006: Chest_CTRL_GRP
+    400008: Chest_JNT
+    400010: gladiator_lowpoly:Mesh
+    400012: Global_CTRL
+    400014: Global_CTRL_GRP
+    400016: Head_CTRL
+    400018: Head_CTRL_GRP
+    400020: Head_JNT
+    400022: Head_JNT_END
+    400024: L_Ankle_JNT
+    400026: L_Elbow_CTRL
+    400028: L_Elbow_CTRL_GRP
+    400030: L_Elbow_JNT
+    400032: L_Fingers_JNT_END
+    400034: L_Foot_CTRL
+    400036: L_Foot_CTRL_GRP
+    400038: L_Foot_IK
+    400040: L_Knee_JNT
+    400042: L_Knee_LOC
+    400044: L_Knee_LOC_CTRL
+    400046: L_Knee_LOC_CTRL_GRP
+    400048: L_Leg_IK
+    400050: L_Shoulder_CTRL
+    400052: L_Shoulder_CTRL_GRP
+    400054: L_Shoulder_JNT
+    400056: L_Thigh_JNT
+    400058: L_Toe_JNT_END
+    400060: L_Wrist_CTRL
+    400062: L_Wrist_CTRL_GRP
+    400064: L_Wrist_JNT
+    400066: Neck_CTRL
+    400068: Neck_CTRL_GRP
+    400070: Neck_JNT
+    400072: R_Ankle_JNT
+    400074: R_Elbow_CTRL
+    400076: R_Elbow_CTRL_GRP
+    400078: R_Elbow_JNT
+    400080: R_Fingers_JNT_END
+    400082: R_Foot_CTRL
+    400084: R_Foot_CTRL_GRP
+    400086: R_Foot_IK
+    400088: R_Knee_JNT
+    400090: R_Knee_LOC
+    400092: R_Knee_LOC_CTRL
+    400094: R_Knee_LOC_CTRL_GRP
+    400096: R_Leg_IK
+    400098: R_Shoulder_CTRL
+    400100: R_Shoulder_CTRL_GRP
+    400102: R_Shoulder_JNT
+    400104: R_Thigh_JNT
+    400106: R_Toe_JNT_END
+    400108: R_Wrist_CTRL
+    400110: R_Wrist_CTRL_GRP
+    400112: R_Wrist_JNT
+    400114: Root_CTRL
+    400116: Root_CTRL_GRP
+    400118: Root_JNT
+    400120: //RootNode
+    4300000: gladiator_lowpoly:Mesh
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: gladiator_lowpoly:Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

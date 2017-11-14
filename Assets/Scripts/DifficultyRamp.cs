@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR || UNITY_EDITOR_WIN
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class DifficultyRamp : MonoBehaviour {
@@ -30,6 +32,7 @@ public class DifficultyRamp : MonoBehaviour {
 	}
 }
 
+#if UNITY_EDITOR || UNITY_EDITOR_WIN
 [CustomEditor(typeof(DifficultyRamp))]
 public class DifficultyRampEditor : Editor
 {
@@ -61,3 +64,4 @@ public class DifficultyRampEditor : Editor
 
     }
 }
+#endif

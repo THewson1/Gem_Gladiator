@@ -36,13 +36,16 @@ public class ThrowPowerUpOrDebuff : MonoBehaviour
         Vector3 throwDestination = arena.transform.position + arena.transform.up * 10;
         Vector3 throwDirection = (throwDestination - throwOrigin).normalized;
 
-        GameObject objectToThrow;
+        GameObject objectToThrow = null;
         // 50 50 coin toss
         if (Random.Range(0, 2) < 1)
         {
-            // throw powerup
-            int j = Random.Range(0, m_powerups.Length);
-            objectToThrow = m_powerups[j];
+            if (m_powerups.Length > 0)
+            {
+                // throw powerup
+                int j = Random.Range(0, m_powerups.Length);
+                objectToThrow = m_powerups[j];
+            }
         }
         else
         {
@@ -50,13 +53,15 @@ public class ThrowPowerUpOrDebuff : MonoBehaviour
             int j = Random.Range(0, m_debuffs.Length);
             objectToThrow = m_debuffs[j];
         }
+        if (objectToThrow != null)
+        {
+            float throwForce = Random.Range(m_minThrowForce, m_maxThrowForce);
 
-        float throwForce = Random.Range(m_minThrowForce, m_maxThrowForce);
+            GameObject thrownGameObject = Instantiate(objectToThrow, throwOrigin, Quaternion.identity);
+            thrownGameObject.GetComponent<Rigidbody>().AddForce(throwDirection * throwForce, ForceMode.VelocityChange);
 
-        GameObject thrownGameObject = Instantiate(objectToThrow, throwOrigin, Quaternion.identity);
-        thrownGameObject.GetComponent<Rigidbody>().AddForce(throwDirection * throwForce, ForceMode.VelocityChange);
-
-        StartCoroutine(ThrowPowerupOrDebuff());
+            StartCoroutine(ThrowPowerupOrDebuff());
+        }
     }
 
 }

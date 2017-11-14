@@ -49,9 +49,12 @@ public class GameController : MonoBehaviour {
 
     private void AddPlayersToBoulderTargets()
     {
-        BounceInternaly boulderBouncingScript = GameObject.FindGameObjectWithTag("Boulder").GetComponent<BounceInternaly>();
-        foreach (GameObject player in m_listOfPlayers)
-            boulderBouncingScript.m_objectsToBounceTowards.Add(player);
+        BounceInternaly boulderBouncingScript = null;
+        if (boulderBouncingScript = GameObject.FindGameObjectWithTag("Boulder").GetComponent<BounceInternaly>())
+        {
+            foreach (GameObject player in m_listOfPlayers)
+                boulderBouncingScript.m_objectsToBounceTowards.Add(player);
+        }   
     }
 
     private void Update()
