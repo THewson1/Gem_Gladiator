@@ -12,6 +12,9 @@ public class EndGameCondition : MonoBehaviour {
     public bool m_singlePlayer;
     public bool m_coop;
     public bool m_versus;
+    public int m_amountOfGemsRequiredToWin = 0;
+    [HideInInspector]
+    public bool m_gameOver = false;
 
     private int m_gameMode;
     private GameObject[] m_players;
@@ -28,7 +31,6 @@ public class EndGameCondition : MonoBehaviour {
     }
 
     void Update () {
-        bool gameOver = false;
 		switch(m_gameMode)
         {
             //single player
@@ -36,18 +38,18 @@ public class EndGameCondition : MonoBehaviour {
                 foreach (GameObject player in m_players)
                 {
                     if (player.GetComponent<PlayerDeathLogic>().m_lives <= 0)
-                        gameOver = true;
+                        m_gameOver = true;
                 }
             break;
             //co-op
             case (2):
-                gameOver = true;
+                m_gameOver = true;
                 foreach (GameObject player in m_players)
                 {
                     PlayerDeathLogic playerDeathLogic = player.GetComponent<PlayerDeathLogic>();
                     if (playerDeathLogic.m_lives > 0)
                     {
-                        gameOver = false;
+                        m_gameOver = false;
                         break;
                     }
                 }
@@ -56,20 +58,48 @@ public class EndGameCondition : MonoBehaviour {
             case (3):
                 foreach (GameObject player in m_players)
                 {
-                    if (player.GetComponent<PlayerDeathLogic>().m_lives <= 0)
-                        gameOver = true;
+                    PlayerDeathLogic playerLogic;
+                    if (playerLogic = player.GetComponent<PlayerDeathLogic>())
+                    {
+                        int playerNumber = player.GetComponent<PlayerInput>().m_playerNumber;
+                        if (playerLogic.m_lives <= 0)
+                            m_gameOver = true;
+                        if (GetComponent<GameController>().m_amountOfGems[playerNumber] > m_amountOfGemsRequiredToWin)
+                            m_gameOver = true;
+                    }
                 }
                 break;
             default:
-                
+                //default
             break;
         }
 
-        if (gameOver)
+        if (m_gameOver)
         {
             //show game over screen (display game over GUI)
             Debug.Log("GameOver");
             SceneManager.LoadScene(0); // this is temp
+            GameController gC = GetComponent<GameController>();
+            switch (m_gameMode)
+            {
+                case (0):
+                    gC.CalculateFinalScore(m_players);
+                    break;
+
+                case (1):
+                    gC.CalculateFinalScore(m_players);
+                    break;
+
+                case (2):
+                    foreach (GameObject player in m_players)
+                    {
+                        if (player.GetComponent<PlayerDeathLogic>().m_lives > 0)
+                        {
+                            // whoever is not dead has won
+                        }
+                    }
+                    break;
+            }
         }
 	}
 }

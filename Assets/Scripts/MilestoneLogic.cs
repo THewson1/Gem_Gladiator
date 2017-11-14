@@ -14,7 +14,13 @@ public class MilestoneLogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         GameController gT = GetComponent<GameController>();
-        if (!m_repeating && gT.m_amountOfGems > m_numberOfGemsToReach)
+        int amountOfGems = 0;
+        foreach (KeyValuePair<int, int> player in gT.m_amountOfGems)
+        {
+            amountOfGems += player.Value;
+        }
+
+        if (!m_repeating && amountOfGems > m_numberOfGemsToReach)
         {
             foreach (Transform location in m_spawnLocations)
             {
@@ -23,9 +29,9 @@ public class MilestoneLogic : MonoBehaviour {
             return;
         }
 
-        if (m_repeating && gT.m_amountOfGems - m_lastMilestoneHit > m_numberOfGemsToReach)
+        if (m_repeating && amountOfGems - m_lastMilestoneHit > m_numberOfGemsToReach)
         {
-            m_lastMilestoneHit = gT.m_amountOfGems;
+            m_lastMilestoneHit = amountOfGems;
             foreach (Transform location in m_spawnLocations)
             {
                 Instantiate(m_objectToSpawn, location);

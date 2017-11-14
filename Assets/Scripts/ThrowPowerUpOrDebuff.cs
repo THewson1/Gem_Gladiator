@@ -26,7 +26,7 @@ public class ThrowPowerUpOrDebuff : MonoBehaviour
         float time = Random.Range(m_minWaitTime, m_maxWaitTime);
         yield return new WaitForSeconds(time);
 
-        int i = Random.Range(0, m_crouds.Length);
+        int i = Random.Range(0, m_crouds.Length - 1);
         GameObject arena = GameObject.FindGameObjectWithTag("ArenaHitBox");
 
         Transform[] possibleAudianceMembers = m_crouds[i].GetComponentsInChildren<Transform>();

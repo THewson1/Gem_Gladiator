@@ -20,7 +20,7 @@ public class PowerupAndDebuffBehaviour : MonoBehaviour {
         {
             if (m_script.GetType() != null)
             {
-                CopyComponent(GetComponent(m_script.GetType()), other.gameObject);
+                CopyPowerupOrDebuffToPlayer(other.gameObject);
                 Destroy(gameObject);
             }
         }
@@ -37,6 +37,11 @@ public class PowerupAndDebuffBehaviour : MonoBehaviour {
             field.SetValue(copy, field.GetValue(original));
         }
         return copy;
+    }
+
+    public Component CopyPowerupOrDebuffToPlayer(GameObject player)
+    {
+        return CopyComponent(GetComponent(m_script.GetType()), player);
     }
 }
 
