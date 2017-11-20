@@ -148,6 +148,7 @@
   <ItemGroup>
     <None Include="Assets\InControl\README\README.txt" />
     <None Include="Assets\Scripts\Changes that have been made.txt" />
+    <None Include="Assets\Shaders\FlagShader.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />

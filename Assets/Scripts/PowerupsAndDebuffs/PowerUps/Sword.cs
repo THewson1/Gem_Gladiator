@@ -6,7 +6,7 @@ using InControl;
 public class Sword : PowerupOrDebuff
 {
 
-    private GameObject m_sword;
+    public GameObject m_sword = null;
     private InputDevice m_usersController = new InputDevice("none");
     public float m_animationLength = 1;
     public float m_attackForce = 100;
@@ -30,8 +30,8 @@ public class Sword : PowerupOrDebuff
             if (child.CompareTag("Sword"))
                 m_sword = child;
         }
-
-        m_sword.SetActive(true);
+        if (m_sword != null)
+            m_sword.SetActive(true);
 
         m_playerDeathLogic = GetComponent<PlayerDeathLogic>();
         m_playerDeathLogic.m_invincible = true;
@@ -52,6 +52,7 @@ public class Sword : PowerupOrDebuff
     public override void Uninitialize()
     {
         // remove sword from character
+        if (m_sword != null)
         m_sword.SetActive(false);
 
         m_playerDeathLogic.m_invincible = false;

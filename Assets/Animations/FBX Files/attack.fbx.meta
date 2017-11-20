@@ -1,0 +1,244 @@
+fileFormatVersion: 2
+guid: 9c198483cc99099469b400308b6d3474
+timeCreated: 1510535352
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Body_CTRL
+    100004: Body_CTRL_GRP
+    100006: Chest_CTRL
+    100008: Chest_CTRL_GRP
+    100010: Chest_JNT
+    100012: gladiator_lowpoly:Mesh
+    100014: Global_CTRL
+    100016: Global_CTRL_GRP
+    100018: Head_CTRL
+    100020: Head_CTRL_GRP
+    100022: Head_JNT
+    100024: Head_JNT_END
+    100026: L_Ankle_JNT
+    100028: L_Elbow_CTRL
+    100030: L_Elbow_CTRL_GRP
+    100032: L_Elbow_JNT
+    100034: L_Fingers_JNT_END
+    100036: L_Foot_CTRL
+    100038: L_Foot_CTRL_GRP
+    100040: L_Foot_IK
+    100042: L_Knee_JNT
+    100044: L_Knee_LOC
+    100046: L_Knee_LOC_CTRL
+    100048: L_Knee_LOC_CTRL_GRP
+    100050: L_Leg_IK
+    100052: L_Shoulder_CTRL
+    100054: L_Shoulder_CTRL_GRP
+    100056: L_Shoulder_JNT
+    100058: L_Thigh_JNT
+    100060: L_Toe_JNT_END
+    100062: L_Wrist_CTRL
+    100064: L_Wrist_CTRL_GRP
+    100066: L_Wrist_JNT
+    100068: Neck_CTRL
+    100070: Neck_CTRL_GRP
+    100072: Neck_JNT
+    100074: R_Ankle_JNT
+    100076: R_Elbow_CTRL
+    100078: R_Elbow_CTRL_GRP
+    100080: R_Elbow_JNT
+    100082: R_Fingers_JNT_END
+    100084: R_Foot_CTRL
+    100086: R_Foot_CTRL_GRP
+    100088: R_Foot_IK
+    100090: R_Knee_JNT
+    100092: R_Knee_LOC
+    100094: R_Knee_LOC_CTRL
+    100096: R_Knee_LOC_CTRL_GRP
+    100098: R_Leg_IK
+    100100: R_Shoulder_CTRL
+    100102: R_Shoulder_CTRL_GRP
+    100104: R_Shoulder_JNT
+    100106: R_Thigh_JNT
+    100108: R_Toe_JNT_END
+    100110: R_Wrist_CTRL
+    100112: R_Wrist_CTRL_GRP
+    100114: R_Wrist_JNT
+    100116: Root_CTRL
+    100118: Root_CTRL_GRP
+    100120: Root_JNT
+    100122: woodSword1
+    400000: //RootNode
+    400002: Body_CTRL
+    400004: Body_CTRL_GRP
+    400006: Chest_CTRL
+    400008: Chest_CTRL_GRP
+    400010: Chest_JNT
+    400012: gladiator_lowpoly:Mesh
+    400014: Global_CTRL
+    400016: Global_CTRL_GRP
+    400018: Head_CTRL
+    400020: Head_CTRL_GRP
+    400022: Head_JNT
+    400024: Head_JNT_END
+    400026: L_Ankle_JNT
+    400028: L_Elbow_CTRL
+    400030: L_Elbow_CTRL_GRP
+    400032: L_Elbow_JNT
+    400034: L_Fingers_JNT_END
+    400036: L_Foot_CTRL
+    400038: L_Foot_CTRL_GRP
+    400040: L_Foot_IK
+    400042: L_Knee_JNT
+    400044: L_Knee_LOC
+    400046: L_Knee_LOC_CTRL
+    400048: L_Knee_LOC_CTRL_GRP
+    400050: L_Leg_IK
+    400052: L_Shoulder_CTRL
+    400054: L_Shoulder_CTRL_GRP
+    400056: L_Shoulder_JNT
+    400058: L_Thigh_JNT
+    400060: L_Toe_JNT_END
+    400062: L_Wrist_CTRL
+    400064: L_Wrist_CTRL_GRP
+    400066: L_Wrist_JNT
+    400068: Neck_CTRL
+    400070: Neck_CTRL_GRP
+    400072: Neck_JNT
+    400074: R_Ankle_JNT
+    400076: R_Elbow_CTRL
+    400078: R_Elbow_CTRL_GRP
+    400080: R_Elbow_JNT
+    400082: R_Fingers_JNT_END
+    400084: R_Foot_CTRL
+    400086: R_Foot_CTRL_GRP
+    400088: R_Foot_IK
+    400090: R_Knee_JNT
+    400092: R_Knee_LOC
+    400094: R_Knee_LOC_CTRL
+    400096: R_Knee_LOC_CTRL_GRP
+    400098: R_Leg_IK
+    400100: R_Shoulder_CTRL
+    400102: R_Shoulder_CTRL_GRP
+    400104: R_Shoulder_JNT
+    400106: R_Thigh_JNT
+    400108: R_Toe_JNT_END
+    400110: R_Wrist_CTRL
+    400112: R_Wrist_CTRL_GRP
+    400114: R_Wrist_JNT
+    400116: Root_CTRL
+    400118: Root_CTRL_GRP
+    400120: Root_JNT
+    400122: woodSword1
+    2300000: woodSword1
+    2300002: gladiator_lowpoly:Mesh
+    3300000: woodSword1
+    3300002: gladiator_lowpoly:Mesh
+    4300000: gladiator_lowpoly:Mesh
+    4300002: woodSword1
+    7400000: Attack
+    9500000: //RootNode
+    13700000: gladiator_lowpoly:Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 3.5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2d132ba1580cc2b48beca97a8496cf22,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

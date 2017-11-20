@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR || UNITY_EDITOR_WIN
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class ParticleLogic : MonoBehaviour {
@@ -10,6 +12,9 @@ public class ParticleLogic : MonoBehaviour {
     private ParticleSystem[] m_particleEmitters;
     public Vector3 m_offset;
     public bool m_alwaysActive;
+
+    public bool m_mustBeTouchingGround = false;
+    public float m_range;
 
     public bool m_triggeredByCollision;
     public bool m_onCollisionEnter;
@@ -43,6 +48,19 @@ public class ParticleLogic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Vector3 dwn = Vector3.down;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, dwn, out hit))
+        {
+            if (hit.distance > m_range)
+            {
+                m_particle.SetActive(false);
+            }
+            else
+            {
+                m_particle.SetActive(true);
+            }
+        }
         m_particle.transform.position = transform.position + m_offset;
 	}
      
@@ -139,6 +157,7 @@ public class ParticleLogic : MonoBehaviour {
     }
 }
 
+#if UNITY_EDITOR || UNITY_EDITOR_WIN
 [CustomEditor(typeof(ParticleLogic))]
 public class ParticleLogicEditor : Editor
 {
@@ -149,6 +168,12 @@ public class ParticleLogicEditor : Editor
         myScript.m_particlePrefab = EditorGUILayout.ObjectField("Particle", myScript.m_particlePrefab, typeof(GameObject), true) as GameObject;
         myScript.m_offset = EditorGUILayout.Vector3Field("Offset From This", myScript.m_offset);
         myScript.m_alwaysActive = EditorGUILayout.Toggle("Always Active", myScript.m_alwaysActive);
+        myScript.m_mustBeTouchingGround = EditorGUILayout.Toggle("Must Be Touching Ground", myScript.m_mustBeTouchingGround);
+
+        if (myScript.m_mustBeTouchingGround)
+        {
+            myScript.m_range = EditorGUILayout.FloatField("Height Of Transform Origin", myScript.m_range);
+        }
 
         if (!myScript.m_alwaysActive)
         {
@@ -180,3 +205,4 @@ public class ParticleLogicEditor : Editor
 
     }
 }
+#endif

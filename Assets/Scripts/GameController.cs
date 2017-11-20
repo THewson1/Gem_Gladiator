@@ -5,15 +5,21 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject m_playerPrefab;
-    [Range(1, 4)] public int m_amountOfPlayers = 1;
+    [Range(1, 2)] public int m_amountOfPlayers = 1;
 
     public Vector3 m_playerSpawnOffset;
+    public int m_pointValueOf1Gem;
+    public int m_pointValueOf1Second;
 
-    public int m_amountOfGems;
+    private float m_secondsPassed;
+    [HideInInspector]
+    public Dictionary<int, int> m_amountOfGems = new Dictionary<int, int>();
+
     [HideInInspector] public List<GameObject> m_listOfPlayers = new List<GameObject>();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+        m_secondsPassed = 0;
         //create the correct amount of players at the start of the game
 
 		for (int i = 0; i < m_amountOfPlayers; i++)
@@ -38,6 +44,7 @@ public class GameController : MonoBehaviour {
         GameObject newPlayer = Instantiate(m_playerPrefab, new Vector3(i - m_amountOfPlayers / 2, 1, 0) + m_playerSpawnOffset, Quaternion.identity);
         m_listOfPlayers.Add(newPlayer);
         newPlayer.GetComponent<PlayerInput>().PlayerNumber = i;
+        m_amountOfGems.Add(i, 0);
     }
 
     private void AddPlayersToBoulderTargets()
@@ -47,8 +54,21 @@ public class GameController : MonoBehaviour {
             boulderBouncingScript.m_objectsToBounceTowards.Add(player);
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    private void Update()
+    {
+        if (!GetComponent<EndGameCondition>().m_gameOver)
+            m_secondsPassed += Time.deltaTime;
+    }
+
+
+    public int CalculateFinalScore(GameObject[] players)
+    {
+        int finalScore = 0;
+        foreach (GameObject player in players)
+        {
+            finalScore += (m_amountOfGems[player.GetComponent<PlayerInput>().m_playerNumber] * m_pointValueOf1Gem);
+        }
+        finalScore += ((int)m_secondsPassed * m_pointValueOf1Second);
+        return finalScore;
+    }
 }

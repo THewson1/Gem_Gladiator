@@ -20,7 +20,7 @@ public class GemMultiplier : PowerupOrDebuff {
     {
         if (other.CompareTag("Gem"))
         {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().m_amountOfGems += m_extraGemsToAdd;
+           GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().m_amountOfGems[GetComponent<PlayerInput>().m_playerNumber] += m_extraGemsToAdd;
         }
     }
 }

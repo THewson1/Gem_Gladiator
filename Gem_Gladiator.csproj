@@ -186,6 +186,7 @@
     <Compile Include="Assets\InControl\Source\XInput\XInputDotNetPure\Utils.cs" />
     <Compile Include="Assets\Scripts\alwaysFaceCamera.cs" />
     <Compile Include="Assets\Scripts\BounceInternaly.cs" />
+    <Compile Include="Assets\Scripts\ControllerMenuSupport.cs" />
     <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
     <Compile Include="Assets\Scripts\DestroyOnTouch.cs" />
     <Compile Include="Assets\Scripts\DestructableObject.cs" />
@@ -194,12 +195,15 @@
     <Compile Include="Assets\Scripts\EndGameCondition.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GemBehaviour.cs" />
+    <Compile Include="Assets\Scripts\GivePowerupAfterAmountOfGems.cs" />
     <Compile Include="Assets\Scripts\HurtPlayerOnTouch.cs" />
     <Compile Include="Assets\Scripts\MaintainVelocity.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\MenuStartup.cs" />
+    <Compile Include="Assets\Scripts\MilestoneLogic.cs" />
     <Compile Include="Assets\Scripts\ParticleLogic.cs" />
     <Compile Include="Assets\Scripts\PickupGameObject.cs" />
+    <Compile Include="Assets\Scripts\PillarSpawningLogic.cs" />
     <Compile Include="Assets\Scripts\PlatformBehaviourPhysicsBased.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerDeathLogic.cs" />
@@ -224,6 +228,7 @@
   <ItemGroup>
     <None Include="Assets\InControl\README\README.txt" />
     <None Include="Assets\Scripts\Changes that have been made.txt" />
+    <None Include="Assets\Shaders\FlagShader.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />

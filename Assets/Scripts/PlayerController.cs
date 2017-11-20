@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
         m_OrigGroundCheckDistance = m_GroundCheckDistance;
     }
 
-    public void Move(Vector3 move, ref int dodge)
+    public void Move(Vector3 move, ref int dodge, ref int attack)
     {
 
         // convert the world relative moveInput vector into a local-relative
@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour {
         CheckGroundStatus();
         move = Vector3.ProjectOnPlane(move, m_GroundNormal);
         m_TurnAmount = Mathf.Atan2(move.x, move.z);
-        m_ForwardAmount = move.z;
+        m_ForwardAmount = move.magnitude;
+ 
 
         // control and velocity handling is different when grounded and airborne:
         if (m_IsGrounded)
@@ -56,20 +57,22 @@ public class PlayerController : MonoBehaviour {
         }
 
         // send input and other state parameters to the animator
-        //UpdateAnimator(move);
+        UpdateAnimator(move);
 
         // move the player
         MovePlayer(move);
         RotatePlayer(move);
         if (dodge == 1)
             Dodge(ref dodge);
+        if (attack == 1)
+            Attack(ref attack);
+        
     }
 
     void UpdateAnimator(Vector3 move)
     {
         // update the animator parameters
-        m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
-        m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
+        m_Animator.SetFloat("Forward", m_ForwardAmount, 1f, Time.deltaTime);
         m_Animator.SetBool("OnGround", m_IsGrounded);
         if (!m_IsGrounded)
         {
@@ -96,7 +99,15 @@ public class PlayerController : MonoBehaviour {
             dodge = 2;
             Vector3 directionToDodge = transform.forward;
             m_Rigidbody.AddForce(directionToDodge * m_dodgeForce, ForceMode.Impulse);
+            m_Animator.SetTrigger("Dodge");
         }
+    }
+
+    void Attack(ref int attack)
+    {
+        attack = 2;
+        m_Animator.SetTrigger("Attack");
+
     }
     void MovePlayer(Vector3 move)
     {
