@@ -37,6 +37,7 @@ public class PlayerDeathLogic : MonoBehaviour {
     void Respawn()
     {
         transform.position = Vector3.zero + (Vector3.up * 5);
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.SetActive(true);
         m_invincible = true;
         gameObject.layer = LayerMask.NameToLayer("Ghost");
