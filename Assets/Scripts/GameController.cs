@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject m_playerPrefab;
+    public GameObject m_boulderPrefab;
     [Range(1, 2)] public int m_amountOfPlayers = 1;
 
     public Vector3 m_playerSpawnOffset;
+    public Vector3 m_boulderSpawnOffset;
     public int m_pointValueOf1Gem;
     public int m_pointValueOf1Second;
 
@@ -36,14 +38,32 @@ public class GameController : MonoBehaviour {
                 CreatePlayer(i);
             }
         }
+
+        Invoke("SpawnBoulderAfterFalling", 8);
+    }
+
+    void SpawnBoulderAfterFalling()
+    {
+        CreateBoulder();
         AddPlayersToBoulderTargets();
+        for (int i = 0; i < m_listOfPlayers.Count; i ++)
+        {
+            m_listOfPlayers[i].GetComponent<PlayerInput>().enabled = true;
+        }
+    }
+
+    private void CreateBoulder()
+    {
+        GameObject newBoulder = Instantiate(m_boulderPrefab, m_playerSpawnOffset, Quaternion.identity);
     }
 
     private void CreatePlayer(int i)
     {
         GameObject newPlayer = Instantiate(m_playerPrefab, new Vector3(i - m_amountOfPlayers / 2, 1, 0) + m_playerSpawnOffset, Quaternion.identity);
         m_listOfPlayers.Add(newPlayer);
-        newPlayer.GetComponent<PlayerInput>().PlayerNumber = i;
+        PlayerInput pi = newPlayer.GetComponent<PlayerInput>();
+        pi.PlayerNumber = i;
+        pi.enabled = false;
         m_amountOfGems.Add(i, 0);
     }
 
