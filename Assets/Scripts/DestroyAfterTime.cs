@@ -15,6 +15,7 @@ public class DestroyAfterTime : MonoBehaviour {
     IEnumerator StartTimer()
     {
         yield return new WaitForSeconds(m_lifeTime);
-        Destroy(this.gameObject);
+        if (gameObject != null)
+            Destroy(gameObject);
     }
 }

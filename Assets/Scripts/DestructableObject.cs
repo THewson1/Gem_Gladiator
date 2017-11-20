@@ -17,7 +17,18 @@ public class DestructableObject : MonoBehaviour {
             m_parts[i].AddComponent<Rigidbody>().isKinematic = true;
         }
 	}
-
+    /*
+    private void OnTriggerEnter(Collider other)
+    {
+        foreach (string tag in m_tagsThatDestroyThis)
+        {
+            if (other.gameObject.CompareTag(tag))
+            {
+                DestroyAllParts();
+            }
+        }
+    }
+    */
     private void OnCollisionEnter(Collision other) {
         foreach (string tag in m_tagsThatDestroyThis)
         {
@@ -28,7 +39,24 @@ public class DestructableObject : MonoBehaviour {
             }
         }
     }
-
+    /*
+    void DestroyAllParts()
+    {
+        for (int i = 0; i < m_parts.Count; i++)
+        {
+            Rigidbody rb = m_parts[i].GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            Transform popDirection = m_parts[i].transform;
+            popDirection.Rotate(new Vector3(0, Random.Range(0, 360), 0));
+            rb.AddForce(popDirection.forward + Vector3.up * m_breakAwayForce, ForceMode.Impulse);
+            rb.AddTorque(popDirection.forward * m_breakAwayForce, ForceMode.Impulse);
+            m_parts[i].AddComponent<DestroyAfterTime>().m_lifeTime = m_partLifetime;
+            m_parts.RemoveAt(i);
+        }
+        Destroy(GetComponent<BoxCollider>());
+        Invoke("DestroySelf", m_partLifetime);
+    }
+    */
     void DestroyTopPart() {
         Rigidbody rb = m_parts[0].GetComponent<Rigidbody>();
         rb.isKinematic = false;

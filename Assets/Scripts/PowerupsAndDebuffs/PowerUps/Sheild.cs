@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sheild : PowerupOrDebuff {
 
-    private GameObject m_sheild;
+    public GameObject m_sheild = null;
 
     public float m_explosionForce = 1000;
     public float m_explosionRadius = 4;
@@ -19,8 +19,8 @@ public class Sheild : PowerupOrDebuff {
             if (child.CompareTag("Shield"))
                 m_sheild = child;
         }
-
-        m_sheild.SetActive(true);
+        if (m_sheild != null)
+            m_sheild.SetActive(true);
 
         m_playerDeathLogic = GetComponent<PlayerDeathLogic>();
         m_playerDeathLogic.m_invincible = true;
@@ -41,7 +41,8 @@ public class Sheild : PowerupOrDebuff {
     public override void Uninitialize()
     {
         //clean up
-        m_sheild.SetActive(false);
+        if (m_sheild != null)
+            m_sheild.SetActive(false);
 
         m_playerDeathLogic.m_invincible = false;
         Destroy(this);

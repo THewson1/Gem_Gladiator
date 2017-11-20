@@ -9,9 +9,9 @@ public abstract class PickupGameObject : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            OnPickup();
+            OnPickup(other.gameObject);
         }
     }
 
-    public abstract void OnPickup();
+    public abstract void OnPickup(GameObject player);
 }
