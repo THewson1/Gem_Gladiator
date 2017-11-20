@@ -29,7 +29,7 @@ public class DifficultyRamp : MonoBehaviour {
         }
 	}
 }
-
+/*
 [CustomEditor(typeof(DifficultyRamp))]
 public class DifficultyRampEditor : Editor
 {
@@ -61,3 +61,4 @@ public class DifficultyRampEditor : Editor
 
     }
 }
+*/

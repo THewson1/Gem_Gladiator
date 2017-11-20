@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e95a1bbe215680642906118439015bf6
 folderAsset: yes
 timeCreated: 1510700273
+=======
+guid: c97026b115baa9e44a530e57591b73ab
+folderAsset: yes
+timeCreated: 1510622288
+>>>>>>> John_Fazakerley
 licenseType: Pro
 DefaultImporter:
   userData: 

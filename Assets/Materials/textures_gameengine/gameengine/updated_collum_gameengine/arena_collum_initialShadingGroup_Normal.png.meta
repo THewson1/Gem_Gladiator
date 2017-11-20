@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: fb4fa36648216064d9abfc35cdc85ed0
 timeCreated: 1510709260
+=======
+guid: f460f357c4118a545af36ff31da87a36
+timeCreated: 1510700714
+>>>>>>> John_Fazakerley
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}

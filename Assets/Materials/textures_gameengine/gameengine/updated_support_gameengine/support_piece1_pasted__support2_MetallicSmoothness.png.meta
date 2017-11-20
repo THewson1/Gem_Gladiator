@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5daa890966bf08942833b6105a38c790
 timeCreated: 1510700273
+=======
+guid: 28670a1aa28fa2a4e81afa58d8313e34
+timeCreated: 1510699610
+>>>>>>> John_Fazakerley
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
@@ -12,8 +17,11 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+<<<<<<< HEAD
     mipMapsPreserveCoverage: 0
     alphaTestReferenceValue: 0.5
+=======
+>>>>>>> John_Fazakerley
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -29,6 +37,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
+<<<<<<< HEAD
     serializedVersion: 2
     filterMode: -1
     aniso: -1
@@ -36,6 +45,12 @@ TextureImporter:
     wrapU: -1
     wrapV: -1
     wrapW: -1
+=======
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: -1
+>>>>>>> John_Fazakerley
   nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
@@ -67,7 +82,10 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
+<<<<<<< HEAD
     physicsShape: []
+=======
+>>>>>>> John_Fazakerley
   spritePackingTag: 
   userData: 
   assetBundleName: 

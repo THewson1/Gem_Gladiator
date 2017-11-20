@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: 45c16d81caa39ed4f9967df6d2560880
+timeCreated: 1511148613
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: arena_balcony1:polySurface110
+    100002: arena_balcony1:polySurface111
+    100004: arena_balcony1:polySurface112
+    100006: arena_balcony1:polySurface113
+    100008: arena_balcony1:polySurface114
+    100010: arena_balcony1:polySurface115
+    100012: arena_balcony1:polySurface116
+    100014: arena_balcony1:polySurface117
+    100016: arena_balcony1:polySurface118
+    100018: arena_balcony1:polySurface119
+    100020: arena_balcony1:polySurface120
+    100022: arena_balcony1:polySurface121
+    100024: arena_balcony1:polySurface122
+    100026: arena_balcony1:polySurface123
+    100028: arena_balcony1:polySurface124
+    100030: arena_balcony1:polySurface125
+    100032: arena_balcony1:polySurface126
+    100034: arena_balcony1:polySurface50
+    100036: arena_balcony1:pPlane5
+    100038: arena_balcony1:pPlane6
+    100040: //RootNode
+    400000: arena_balcony1:polySurface110
+    400002: arena_balcony1:polySurface111
+    400004: arena_balcony1:polySurface112
+    400006: arena_balcony1:polySurface113
+    400008: arena_balcony1:polySurface114
+    400010: arena_balcony1:polySurface115
+    400012: arena_balcony1:polySurface116
+    400014: arena_balcony1:polySurface117
+    400016: arena_balcony1:polySurface118
+    400018: arena_balcony1:polySurface119
+    400020: arena_balcony1:polySurface120
+    400022: arena_balcony1:polySurface121
+    400024: arena_balcony1:polySurface122
+    400026: arena_balcony1:polySurface123
+    400028: arena_balcony1:polySurface124
+    400030: arena_balcony1:polySurface125
+    400032: arena_balcony1:polySurface126
+    400034: arena_balcony1:polySurface50
+    400036: arena_balcony1:pPlane5
+    400038: arena_balcony1:pPlane6
+    400040: //RootNode
+    2300000: arena_balcony1:polySurface110
+    2300002: arena_balcony1:polySurface111
+    2300004: arena_balcony1:polySurface112
+    2300006: arena_balcony1:polySurface113
+    2300008: arena_balcony1:polySurface114
+    2300010: arena_balcony1:polySurface115
+    2300012: arena_balcony1:polySurface116
+    2300014: arena_balcony1:polySurface117
+    2300016: arena_balcony1:polySurface118
+    2300018: arena_balcony1:polySurface119
+    2300020: arena_balcony1:polySurface120
+    2300022: arena_balcony1:polySurface121
+    2300024: arena_balcony1:polySurface122
+    2300026: arena_balcony1:polySurface123
+    2300028: arena_balcony1:polySurface124
+    2300030: arena_balcony1:polySurface125
+    2300032: arena_balcony1:polySurface126
+    2300034: arena_balcony1:pPlane5
+    2300036: arena_balcony1:pPlane6
+    3300000: arena_balcony1:polySurface110
+    3300002: arena_balcony1:polySurface111
+    3300004: arena_balcony1:polySurface112
+    3300006: arena_balcony1:polySurface113
+    3300008: arena_balcony1:polySurface114
+    3300010: arena_balcony1:polySurface115
+    3300012: arena_balcony1:polySurface116
+    3300014: arena_balcony1:polySurface117
+    3300016: arena_balcony1:polySurface118
+    3300018: arena_balcony1:polySurface119
+    3300020: arena_balcony1:polySurface120
+    3300022: arena_balcony1:polySurface121
+    3300024: arena_balcony1:polySurface122
+    3300026: arena_balcony1:polySurface123
+    3300028: arena_balcony1:polySurface124
+    3300030: arena_balcony1:polySurface125
+    3300032: arena_balcony1:polySurface126
+    3300034: arena_balcony1:pPlane5
+    3300036: arena_balcony1:pPlane6
+    4300000: arena_balcony1:polySurface112
+    4300002: arena_balcony1:polySurface113
+    4300004: arena_balcony1:polySurface120
+    4300006: arena_balcony1:polySurface121
+    4300008: arena_balcony1:polySurface122
+    4300010: arena_balcony1:polySurface110
+    4300012: arena_balcony1:polySurface111
+    4300014: arena_balcony1:polySurface114
+    4300016: arena_balcony1:polySurface115
+    4300018: arena_balcony1:pPlane5
+    4300020: arena_balcony1:pPlane6
+    4300022: arena_balcony1:polySurface116
+    4300024: arena_balcony1:polySurface117
+    4300026: arena_balcony1:polySurface118
+    4300028: arena_balcony1:polySurface119
+    4300030: arena_balcony1:polySurface123
+    4300032: arena_balcony1:polySurface124
+    4300034: arena_balcony1:polySurface125
+    4300036: arena_balcony1:polySurface126
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
