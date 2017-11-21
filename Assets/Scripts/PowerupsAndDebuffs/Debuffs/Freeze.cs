@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Freeze : PowerupOrDebuff {
 
-    public GameObject m_iceBlock;
+    public GameObject m_iceBlockPrefab;
     public GameObject m_iceBreakingParticles;
+    public Vector3 m_particleSpawnOffset;
     private GameObject m_instantiatedIceBlock;
 
     public override void Initialize()
     {
         GetComponent<PlayerInput>().enabled = false;
-        m_instantiatedIceBlock = Instantiate(m_iceBlock, gameObject.transform);
+        m_instantiatedIceBlock = Instantiate(m_iceBlockPrefab, gameObject.transform);
+        m_instantiatedIceBlock.transform.position = transform.position;
     }
 
     public override void Uninitialize()
     {
         //create particles
-        GameObject iceParticles = Instantiate(m_iceBreakingParticles, transform.position, Quaternion.identity);
+        GameObject iceParticles = Instantiate(m_iceBreakingParticles, transform.position + m_particleSpawnOffset, Quaternion.identity);
         DestroyAfterTime destroyAfterTime = iceParticles.AddComponent<DestroyAfterTime>();
         destroyAfterTime.m_lifeTime = iceParticles.GetComponent<ParticleSystem>().main.duration;
         GetComponent<PlayerInput>().enabled = true;
