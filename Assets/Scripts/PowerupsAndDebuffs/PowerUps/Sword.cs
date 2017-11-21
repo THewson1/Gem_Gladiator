@@ -32,9 +32,6 @@ public class Sword : PowerupOrDebuff
         }
         if (m_sword != null)
             m_sword.SetActive(true);
-
-        m_playerDeathLogic = GetComponent<PlayerDeathLogic>();
-        m_playerDeathLogic.m_invincible = true;
     }
 
     List<GameObject> FindChildren(Transform parent)
@@ -78,6 +75,8 @@ public class Sword : PowerupOrDebuff
 
     void Attack()
     {
+        m_playerDeathLogic = GetComponent<PlayerDeathLogic>();
+        m_playerDeathLogic.m_invincible = true;
         m_attacking = true;
         Invoke("Uninitialize", m_animationLength);
     }
