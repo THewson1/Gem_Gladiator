@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
 
     public Vector3 m_playerSpawnOffset;
     public Vector3 m_boulderSpawnOffset;
+    public Vector3 m_boulderStartingVelocity;
     public int m_pointValueOf1Gem;
     public int m_pointValueOf1Second;
 
@@ -54,7 +55,11 @@ public class GameController : MonoBehaviour {
 
     private void CreateBoulder()
     {
-        GameObject newBoulder = Instantiate(m_boulderPrefab, m_playerSpawnOffset, Quaternion.identity);
+        GameObject newBoulder = Instantiate(m_boulderPrefab, m_boulderSpawnOffset, Quaternion.identity);
+        newBoulder.GetComponent<Rigidbody>().AddForce(m_boulderStartingVelocity, ForceMode.Impulse);
+        // the next two lines of code fix a bug where the boulder gains an unrealistic amount of speed downward
+        newBoulder.GetComponent<BounceInternaly>().enabled = false;
+        Invoke("EnableBoulderBouncing", 2);
     }
 
     private void CreatePlayer(int i)
@@ -65,6 +70,15 @@ public class GameController : MonoBehaviour {
         pi.PlayerNumber = i;
         pi.enabled = false;
         m_amountOfGems.Add(i, 0);
+    }
+
+    void EnableBoulderBouncing()
+    {
+        GameObject[] boulders = GameObject.FindGameObjectsWithTag("Boulder");
+        for (int i = 0; i < boulders.Length; i ++)
+        {
+            boulders[i].GetComponent<BounceInternaly>().enabled = true;
+        }
     }
 
     private void AddPlayersToBoulderTargets()
