@@ -14,6 +14,7 @@ public class InGameUILogic : MonoBehaviour {
     GameController m_gc;
     Canvas m_canvas;
     public Text m_gemCounter;
+    public Text m_timer;
     
 
 	// Use this for initialization
@@ -22,21 +23,24 @@ public class InGameUILogic : MonoBehaviour {
 
         m_gc = go.GetComponent<GameController>();
         m_canvas = GetComponent<Canvas>();
-        m_gemCounter.text = "test";
-    }
+       }
 	
 	// Update is called once per frame
 	void Update () {
 
+        // Time Displayer
         int tp = (int)m_gc.m_secondsPassed;
 
         if(tp >=60) {
             m_minutes = tp / 60;
             m_seconds = (tp % 60 >= 0)? tp % 60 : 0;
-            m_gemCounter.text = m_minutes.ToString() + ":" + m_seconds.ToString() ;
+            m_timer.text = m_minutes.ToString() + ":" + m_seconds.ToString() ;
         }else{
             m_seconds = tp;
-            m_gemCounter.text = "0:" + m_seconds.ToString();
+            m_timer.text = "0:" + m_seconds.ToString();
         }
+
+        // Gem Counter
+        m_gemCounter.text = "Gems: " + m_gc.m_amountOfGems.ToString();
     }
 }
