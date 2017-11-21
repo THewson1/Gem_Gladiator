@@ -7,6 +7,13 @@ public class DestroyOnTouch : MonoBehaviour {
     public string m_tagOfDestroyer;
     public float m_delay;
 
+    private AudioSource m_audioSource;
+
+    private void Start()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag(m_tagOfDestroyer))
@@ -25,6 +32,8 @@ public class DestroyOnTouch : MonoBehaviour {
 
     IEnumerator DestroyGameObject()
     {
+        if (m_audioSource)
+            m_audioSource.Play();
         yield return new WaitForSeconds(m_delay);
         Destroy(gameObject);
     }

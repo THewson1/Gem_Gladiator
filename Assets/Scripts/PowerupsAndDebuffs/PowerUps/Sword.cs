@@ -16,11 +16,13 @@ public class Sword : PowerupOrDebuff
 
     private bool m_attacking = false;
     private PlayerInput m_playerInput;
+    private AudioSource m_audioSource;
 
     private PlayerDeathLogic m_playerDeathLogic;
 
     public override void Initialize()
     {
+        m_audioSource = GetComponent<AudioSource>();
         m_playerInput = GetComponent<PlayerInput>();
         if (InputManager.Devices.Count > 0)
             m_usersController = InputManager.Devices[m_playerInput.m_playerNumber];
@@ -75,6 +77,8 @@ public class Sword : PowerupOrDebuff
 
     void Attack()
     {
+        if (m_audioSource)
+            m_audioSource.Play();
         m_playerDeathLogic = GetComponent<PlayerDeathLogic>();
         m_playerDeathLogic.m_invincible = true;
         m_attacking = true;

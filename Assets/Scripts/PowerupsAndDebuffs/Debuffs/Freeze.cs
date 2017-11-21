@@ -8,6 +8,7 @@ public class Freeze : PowerupOrDebuff {
     public GameObject m_iceBreakingParticles;
     public Vector3 m_particleSpawnOffset;
     private GameObject m_instantiatedIceBlock;
+    public AudioSource m_iceBreakingSoundEffect;
 
     public override void Initialize()
     {
@@ -18,6 +19,8 @@ public class Freeze : PowerupOrDebuff {
 
     public override void Uninitialize()
     {
+        if (m_iceBreakingSoundEffect)
+            m_iceBreakingSoundEffect.Play();
         //create particles
         GameObject iceParticles = Instantiate(m_iceBreakingParticles, transform.position + m_particleSpawnOffset, Quaternion.identity);
         DestroyAfterTime destroyAfterTime = iceParticles.AddComponent<DestroyAfterTime>();

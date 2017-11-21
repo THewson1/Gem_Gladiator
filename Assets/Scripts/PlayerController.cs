@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     [Range(1f, 4f)] [SerializeField] float m_GravityMultiplier = 2f;
     public float m_movementSpeed = 2;
     [SerializeField] float m_dodgeForce = 500;
+    public AudioSource m_dashSoundEffect;
+    public AudioSource m_attackSoundEffect;
 
     private Rigidbody m_Rigidbody;
     private Animator m_Animator;
@@ -94,6 +96,8 @@ public class PlayerController : MonoBehaviour {
 
     void Dodge(ref int dodge)
     {
+        if (m_dashSoundEffect)
+            m_dashSoundEffect.Play();
         if (m_Rigidbody != null)
         {
             dodge = 2;
@@ -105,6 +109,8 @@ public class PlayerController : MonoBehaviour {
 
     void Attack(ref int attack)
     {
+        if (m_attackSoundEffect)
+            m_attackSoundEffect.Play();
         attack = 2;
         m_Animator.SetTrigger("Attack");
 

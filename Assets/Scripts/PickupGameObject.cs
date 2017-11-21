@@ -4,12 +4,21 @@ using UnityEngine;
 
 public abstract class PickupGameObject : MonoBehaviour {
 
+    AudioSource m_audioSource;
+
+    private void Start()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(this.gameObject);
+            if (m_audioSource)
+                m_audioSource.Play();
             OnPickup(other.gameObject);
+            Destroy(this.gameObject);
         }
     }
 
