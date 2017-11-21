@@ -17,16 +17,13 @@ public class BoulderMagnet : PowerupOrDebuff {
         //called when this script is removed from the player
     }
 
-    void Update()
+    void FixedUpdate()
     {
         GameObject[] boulders = GameObject.FindGameObjectsWithTag("Boulder");
 
         m_listOfBoulders.Clear();
         m_listOfBoulders.AddRange(boulders);
-    }
 
-    void FixedUpdate()
-    {
         for (int i = 0; i < m_listOfBoulders.Count; i++)
         {
             Vector3 directionTowardsPlayer = (transform.position - m_listOfBoulders[i].transform.position);

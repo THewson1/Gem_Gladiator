@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MaintainVelocity : MonoBehaviour {
 
+    public float m_downwardForce = 100;
     [Range(0, 5)] public float m_desiredVelocity;
     private Rigidbody m_rb;
 
@@ -15,6 +16,7 @@ public class MaintainVelocity : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        m_rb.AddForce(Vector3.down * m_downwardForce);
 		if (m_rb.velocity.magnitude < m_desiredVelocity)
         {
             Vector3 forceToadd = m_rb.velocity.normalized * m_desiredVelocity;
