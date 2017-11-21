@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gem_Gladiator", "Gem_Gladiator.csproj", "{4CB0FE4B-3B49-AF4D-E5AA-0629252EE633}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gem_Gladiator.Plugins", "Gem_Gladiator.Plugins.csproj", "{44900812-EF3B-375E-F070-B11DC3E64A7F}"

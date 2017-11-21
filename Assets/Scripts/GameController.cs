@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
     public int m_pointValueOf1Gem;
     public int m_pointValueOf1Second;
 
-    private float m_secondsPassed;
+    public float m_secondsPassed;
     [HideInInspector]
     public Dictionary<int, int> m_amountOfGems = new Dictionary<int, int>();
 
