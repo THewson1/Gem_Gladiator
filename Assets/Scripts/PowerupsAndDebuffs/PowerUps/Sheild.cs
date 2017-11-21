@@ -61,6 +61,11 @@ public class Sheild : PowerupOrDebuff {
                 {
                     rb.velocity = Vector3.zero;
                     rb.AddExplosionForce(m_explosionForce, transform.position + Vector3.up, m_explosionRadius * rb.mass);
+                    if (listOfGameObjects[i].CompareTag("Boulder"))
+                    {
+                        Vector3 directionToMove = (other.transform.position - transform.position).normalized;
+                        rb.AddForce(directionToMove * m_explosionForce, ForceMode.Impulse);
+                    }
                 }
             }
 

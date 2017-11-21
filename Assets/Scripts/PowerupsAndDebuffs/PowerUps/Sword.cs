@@ -87,8 +87,8 @@ public class Sword : PowerupOrDebuff
         {
             Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
-            rb.AddExplosionForce(m_attackForce, transform.position + Vector3.up, 1 * rb.mass);
-            rb.AddForce(Vector3.up * m_attackForce / 10, ForceMode.Impulse);
+            Vector3 directionToMove = (collision.transform.position -  transform.position).normalized;
+            rb.AddForce(directionToMove * m_attackForce, ForceMode.Impulse);
 
             SpawnGems(collision.gameObject);
 
