@@ -51,7 +51,12 @@ public class DestructableObject : MonoBehaviour {
             rb.AddForce(popDirection.forward + Vector3.up * m_breakAwayForce, ForceMode.Impulse);
             rb.AddTorque(popDirection.forward * m_breakAwayForce, ForceMode.Impulse);
             m_parts[i].AddComponent<DestroyAfterTime>().m_lifeTime = m_partLifetime;
-            m_parts.RemoveAt(i);
+            m_parts[i].transform.parent = null;
+            m_parts[i].layer = LayerMask.GetMask("Ghost");
+        }
+        for (int i = 0; i < m_parts.Count; i++)
+        {
+            m_parts.RemoveAt(0);
         }
         Destroy(GetComponent<BoxCollider>());
         Invoke("DestroySelf", m_partLifetime);
@@ -65,6 +70,7 @@ public class DestructableObject : MonoBehaviour {
         rb.AddForce( popDirection.forward + Vector3.up * m_breakAwayForce, ForceMode.Impulse);
         rb.AddTorque(popDirection.forward * m_breakAwayForce, ForceMode.Impulse);
         m_parts[0].AddComponent<DestroyAfterTime>().m_lifeTime = m_partLifetime;
+        m_parts[0].layer = LayerMask.GetMask("Ghost");
         m_parts.RemoveAt(0);
 
 
