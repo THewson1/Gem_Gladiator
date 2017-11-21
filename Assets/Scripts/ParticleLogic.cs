@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-//#if UNITY_EDITOR || UNITY_EDITOR_WIN
+#if UNITY_EDITOR || UNITY_EDITOR_WIN
 using UnityEditor;
-//#endif
+#endif
 using UnityEngine;
 
 public class ParticleLogic : MonoBehaviour {
@@ -48,17 +48,20 @@ public class ParticleLogic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 dwn = Vector3.down;
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, dwn, out hit))
+        if (m_mustBeTouchingGround)
         {
-            if (hit.distance > m_range)
+            Vector3 dwn = Vector3.down;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, dwn, out hit))
             {
-                m_particle.SetActive(false);
-            }
-            else
-            {
-                m_particle.SetActive(true);
+                if (hit.distance > m_range)
+                {
+                    m_particle.SetActive(false);
+                }
+                else
+                {
+                    m_particle.SetActive(true);
+                }
             }
         }
         m_particle.transform.position = transform.position + m_offset;
@@ -157,7 +160,7 @@ public class ParticleLogic : MonoBehaviour {
             m_particle.AddComponent<DestroyAfterTime>().m_lifeTime = m_particleEmitters[0].main.duration;
     }
 }
-/*
+
 #if UNITY_EDITOR || UNITY_EDITOR_WIN
 [CustomEditor(typeof(ParticleLogic))]
 public class ParticleLogicEditor : Editor
@@ -207,4 +210,3 @@ public class ParticleLogicEditor : Editor
     }
 }
 #endif
-*/
