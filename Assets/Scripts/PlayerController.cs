@@ -7,6 +7,7 @@ using InControl;
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerVsPlayerCombat))]
 public class PlayerController : MonoBehaviour {
 
     [SerializeField] float m_AnimSpeedMultiplier = 1f;
@@ -113,7 +114,7 @@ public class PlayerController : MonoBehaviour {
             m_attackSoundEffect.Play();
         attack = 2;
         m_Animator.SetTrigger("Attack");
-
+        GetComponent<PlayerVsPlayerCombat>().TryToHitPlayers();
     }
     void MovePlayer(Vector3 move)
     {
