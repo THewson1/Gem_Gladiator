@@ -15,8 +15,12 @@ public abstract class PickupGameObject : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            if (m_pickupSoundEffect)
-                m_pickupSoundEffect.Play();
+            GameObject soundEffect = Instantiate(new GameObject());
+            AudioSource audioSource = soundEffect.AddComponent<AudioSource>();
+            audioSource.clip = m_pickupSoundEffect.clip;
+            audioSource.volume = m_pickupSoundEffect.volume;
+            soundEffect.AddComponent<DestroyAfterTime>().m_lifeTime = 5;
+            audioSource.Play();
             OnPickup(other.gameObject);
             Destroy(this.gameObject);
         }

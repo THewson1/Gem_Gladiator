@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class PowerupAndDebuffBehaviour : MonoBehaviour {
+public class PowerupAndDebuffBehaviour : PickupGameObject {
 
     public PowerupOrDebuff m_script;
 
@@ -15,14 +15,12 @@ public class PowerupAndDebuffBehaviour : MonoBehaviour {
         GetComponent<BoxCollider>().isTrigger = true;
 	}
 
-    void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player"))
+    public override void OnPickup(GameObject player)
+    {
+        if (m_script.GetType() != null)
         {
-            if (m_script.GetType() != null)
-            {
-                CopyPowerupOrDebuffToPlayer(other.gameObject);
-                Destroy(gameObject);
-            }
+            CopyPowerupOrDebuffToPlayer(player);
+            Destroy(gameObject);
         }
     }
 
