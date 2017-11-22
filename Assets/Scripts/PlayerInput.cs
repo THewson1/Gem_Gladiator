@@ -123,7 +123,7 @@ public class PlayerInput : MonoBehaviour {
 
         if (m_attacking == 0 && m_usersController.Action1.WasPressed)
         {
-            m_dodging = 1;
+            m_attacking = 1;
             Invoke("CoolDownAttack", m_attackCooldown);
         }
 
