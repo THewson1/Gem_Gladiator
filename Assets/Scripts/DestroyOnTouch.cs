@@ -35,7 +35,9 @@ public class DestroyOnTouch : MonoBehaviour {
         GameObject audioSource = Instantiate(new GameObject());
         audioSource.AddComponent<AudioSource>().clip = m_audioSource.clip;
         audioSource.AddComponent<DestroyAfterTime>().m_lifeTime = 5;
-        audioSource.GetComponent<AudioSource>().Play();
+        AudioSource aus = audioSource.GetComponent<AudioSource>();
+        aus.volume = m_audioSource.volume;
+        aus.Play();
         yield return new WaitForSeconds(m_delay);
         Destroy(gameObject);
     }

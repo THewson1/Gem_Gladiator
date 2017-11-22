@@ -37,7 +37,7 @@ public class PlaySoundWhenTouchingGround : MonoBehaviour {
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb.velocity.magnitude > m_velocityRequired)
         {
-            if (m_soundEffect)
+            if (m_soundEffect && !m_soundEffect.isPlaying)
                 m_soundEffect.Play();
         }
     }
