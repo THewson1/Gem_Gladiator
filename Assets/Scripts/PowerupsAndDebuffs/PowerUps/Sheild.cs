@@ -9,8 +9,6 @@ public class Sheild : PowerupOrDebuff {
     public float m_explosionForce = 1000;
     public float m_explosionRadius = 4;
 
-    public AudioSource m_audioSource;
-
     private PlayerDeathLogic m_playerDeathLogic;
 
     public override void Initialize()
