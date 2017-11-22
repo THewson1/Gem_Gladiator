@@ -9,13 +9,12 @@ public class Sheild : PowerupOrDebuff {
     public float m_explosionForce = 1000;
     public float m_explosionRadius = 4;
 
-    private AudioSource m_audioSource;
+    public AudioSource m_audioSource;
 
     private PlayerDeathLogic m_playerDeathLogic;
 
     public override void Initialize()
     {
-        m_audioSource = GetComponent<AudioSource>();
         //spawn sheild on player
         foreach (GameObject child in FindChildren(transform))
         {
@@ -71,8 +70,8 @@ public class Sheild : PowerupOrDebuff {
                     }
                 }
             }
-            if (m_audioSource)
-                m_audioSource.Play();
+            GameObject soundEffect = Instantiate(new GameObject());
+            m_audioSource.Play();
             Invoke("Uninitialize", 1);
         }
     }

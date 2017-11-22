@@ -95,7 +95,7 @@ public class PlayerInput : MonoBehaviour {
 
     void CoolDownAttack()
     {
-        m_dodging = 0;
+        m_attacking = 0;
     }
 
     void CheckKeyboardControls(out float h, out float v)

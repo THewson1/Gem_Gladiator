@@ -10,9 +10,13 @@ public class DestructableObject : MonoBehaviour {
     public float m_breakAwayForce;
     public float m_partLifetime;
 
+    private AudioSource m_audioSource;
+
     // Use this for initialization
     void Start () {
-		for (int i = 0; i < m_parts.Count; i ++)
+        m_audioSource = GetComponent<AudioSource>();
+
+        for (int i = 0; i < m_parts.Count; i ++)
         {
             m_parts[i].AddComponent<Rigidbody>().isKinematic = true;
         }
@@ -42,6 +46,8 @@ public class DestructableObject : MonoBehaviour {
     
     void DestroyAllParts()
     {
+        if (m_audioSource)
+            m_audioSource.Play();
         for (int i = 0; i < m_parts.Count; i++)
         {
             Rigidbody rb = m_parts[i].GetComponent<Rigidbody>();
@@ -62,6 +68,8 @@ public class DestructableObject : MonoBehaviour {
     }
     
     void DestroyTopPart() {
+        if (m_audioSource)
+            m_audioSource.Play();
         Rigidbody rb = m_parts[0].GetComponent<Rigidbody>();
         rb.isKinematic = false;
         Transform popDirection = m_parts[0].transform;

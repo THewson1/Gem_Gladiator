@@ -5,26 +5,29 @@ using UnityEngine;
 public class PlaySoundWhenTouchingGround : MonoBehaviour {
 
     public float m_velocityRequired;
-    public string m_requiredTag = null;
-    public AudioSource m_runningSoundEffect;
+    public string m_requiredTag = "NULL";
+    public AudioSource m_soundEffect;
     public float m_range = 1;
 
     // Update is called once per frame
     void FixedUpdate () {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down * m_range, out hit))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit))
         {
-            if (m_requiredTag != null)
+            if (hit.distance <= m_range)
             {
-                if (hit.transform.CompareTag(m_requiredTag))
+                if (m_requiredTag != "NULL")
+                {
+                    if (hit.transform.CompareTag(m_requiredTag))
+                    {
+                        PlaySound();
+                    }
+                }
+                else
                 {
                     PlaySound();
                 }
-            }
-            else
-            {
-                PlaySound();
             }
         }
 	}
@@ -34,8 +37,8 @@ public class PlaySoundWhenTouchingGround : MonoBehaviour {
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb.velocity.magnitude > m_velocityRequired)
         {
-            if (m_runningSoundEffect)
-                m_runningSoundEffect.Play();
+            if (m_soundEffect)
+                m_soundEffect.Play();
         }
     }
 }
