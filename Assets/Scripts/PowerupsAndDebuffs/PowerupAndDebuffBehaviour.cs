@@ -26,7 +26,15 @@ public class PowerupAndDebuffBehaviour : MonoBehaviour {
         }
     }
 
-    Component CopyComponent(Component original, GameObject destination)
+    AudioSource CopySound(AudioSource original, GameObject destination)
+    {
+        AudioSource audioSource = destination.AddComponent<AudioSource>();
+        audioSource.clip = original.clip;
+        audioSource.volume = original.volume;
+        return audioSource;
+    }
+
+    PowerupOrDebuff CopyComponent(Component original, GameObject destination)
     {
         System.Type type = original.GetType();
         Component copy = destination.AddComponent(type);
@@ -36,12 +44,17 @@ public class PowerupAndDebuffBehaviour : MonoBehaviour {
         {
             field.SetValue(copy, field.GetValue(original));
         }
-        return copy;
+        return (PowerupOrDebuff)copy;
     }
 
-    public Component CopyPowerupOrDebuffToPlayer(GameObject player)
+    public void CopyPowerupOrDebuffToPlayer(GameObject player)
     {
-        return CopyComponent(GetComponent(m_script.GetType()), player);
+        PowerupOrDebuff script = CopyComponent(GetComponent(m_script.GetType()), player);
+        if (GetComponent<AudioSource>())
+        {
+            AudioSource audioSource = CopySound(GetComponent<AudioSource>(), player);
+            script.m_audioSource = audioSource;
+        }
     }
 }
 

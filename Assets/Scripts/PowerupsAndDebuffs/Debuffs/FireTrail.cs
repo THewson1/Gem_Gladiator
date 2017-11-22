@@ -14,6 +14,8 @@ public class FireTrail : PowerupOrDebuff {
 
     public override void Initialize()
     {
+        if (m_audioSource)
+            m_audioSource.Play();
         m_boulders = GameObject.FindGameObjectsWithTag("Boulder");
     }
 

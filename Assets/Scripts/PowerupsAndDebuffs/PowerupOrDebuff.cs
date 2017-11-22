@@ -7,6 +7,8 @@ public abstract class PowerupOrDebuff : MonoBehaviour {
 
     [Tooltip("leave zero if no lifetime is required")]
     [SerializeField] public float m_lifetime;
+    [Tooltip("Is not required")]
+    public AudioSource m_audioSource = null;
 
 	// Use this for initialization
 	void Start () {
