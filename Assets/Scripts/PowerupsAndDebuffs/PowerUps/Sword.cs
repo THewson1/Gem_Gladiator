@@ -6,7 +6,7 @@ using InControl;
 public class Sword : PowerupOrDebuff
 {
 
-    public GameObject m_sword = null;
+    private GameObject m_sword = null;
     private InputDevice m_usersController = new InputDevice("none");
     public float m_animationLength = 1;
     public float m_attackForce = 100;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sheild : PowerupOrDebuff {
 
-    public GameObject m_sheild = null;
+    private GameObject m_sheild = null;
 
     public float m_explosionForce = 1000;
     public float m_explosionRadius = 4;
@@ -70,7 +70,6 @@ public class Sheild : PowerupOrDebuff {
                     }
                 }
             }
-            GameObject soundEffect = Instantiate(new GameObject());
             m_audioSource.Play();
             Invoke("Uninitialize", 1);
         }
