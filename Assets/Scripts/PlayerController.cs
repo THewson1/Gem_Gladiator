@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
         m_OrigGroundCheckDistance = m_GroundCheckDistance;
     }
 
-    public void Move(Vector3 move, ref int dodge, ref int attack)
+    public void Move(Vector3 move, float dodge, float attack)
     {
 
         // convert the world relative moveInput vector into a local-relative
@@ -65,10 +65,10 @@ public class PlayerController : MonoBehaviour {
         // move the player
         MovePlayer(move);
         RotatePlayer(move);
-        if (dodge == 1)
-            Dodge(ref dodge);
-        if (attack == 1)
-            Attack(ref attack);
+        if (dodge == 0)
+            Dodge();
+        if (attack == 0)
+            Attack();
         
     }
 
@@ -95,24 +95,22 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Dodge(ref int dodge)
+    void Dodge()
     {
         if (m_dashSoundEffect)
             m_dashSoundEffect.Play();
         if (m_Rigidbody != null)
         {
-            dodge = 2;
             Vector3 directionToDodge = transform.forward;
             m_Rigidbody.AddForce(directionToDodge * m_dodgeForce, ForceMode.Impulse);
             m_Animator.SetTrigger("Dodge");
         }
     }
 
-    void Attack(ref int attack)
+    void Attack()
     {
         if (m_attackSoundEffect)
             m_attackSoundEffect.Play();
-        attack = 2;
         m_Animator.SetTrigger("Attack");
         GetComponent<PlayerVsPlayerCombat>().TryToHitPlayers();
     }
