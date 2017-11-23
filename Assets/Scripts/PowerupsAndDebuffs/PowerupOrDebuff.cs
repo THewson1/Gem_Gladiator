@@ -9,6 +9,7 @@ public abstract class PowerupOrDebuff : MonoBehaviour {
     [SerializeField] public float m_lifetime;
     [Tooltip("Is not required")]
     public AudioSource m_audioSource = null;
+    public Sprite m_image = null;
 
 	// Use this for initialization
 	void Start () {
