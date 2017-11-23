@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class InGameUILogic : MonoBehaviour {
 
-    public short m_lifeCounter;
-    //public bool m_dashBool;
-    //public short m_dashCoolDown;
+    public short m_lifeCounter; // this should be an array of heart images
     public int m_seconds;
     public int m_minutes;
         

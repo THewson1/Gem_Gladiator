@@ -16,7 +16,7 @@ public class PlayerInput : MonoBehaviour {
     private Vector3 m_move;
     public float m_dodging; // dodging is time in seconds since last dodge (m_dodgeCooldown being max)
     public float m_attacking; // attacking is time in seconds since last Attack (m_attackCooldown being max)
-    //public bool m_ableToAttack = false; // used for sword power up (not ideal :/)
+    public bool m_ableToAttack = false; // used for sword power up (not ideal :/)
 
     //public accessor for the player number
     public int PlayerNumber
