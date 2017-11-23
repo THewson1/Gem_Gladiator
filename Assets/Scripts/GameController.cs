@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject m_playerPrefab;
-    public Texture[] m_playerTextures;
+    public Material[] m_playerTextures;
     public GameObject[] m_playerIcons;
     public GameObject m_boulderPrefab;
     [Range(1, 2)] public int m_amountOfPlayers = 1;
@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour {
         GameObject newPlayer = Instantiate(m_playerPrefab, new Vector3(i - m_amountOfPlayers / 2, 1, 0) + m_playerSpawnOffset, Quaternion.identity);
         Instantiate(m_playerIcons[i], newPlayer.transform);
         m_listOfPlayers.Add(newPlayer);
-        newPlayer.transform.Find("Glen").Find("gladiator_lowpoly:Mesh").gameObject.GetComponent<Renderer>().material.mainTexture = m_playerTextures[i];
+        newPlayer.transform.Find("Glen").Find("gladiator_lowpoly:Mesh").gameObject.GetComponent<Renderer>().material = m_playerTextures[i];
         PlayerInput pi = newPlayer.GetComponent<PlayerInput>();
         pi.PlayerNumber = i;
         pi.enabled = false;
