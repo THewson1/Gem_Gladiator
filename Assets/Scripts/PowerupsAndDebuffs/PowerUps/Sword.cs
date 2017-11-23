@@ -16,7 +16,7 @@ public class Sword : PowerupOrDebuff
 
     private bool m_attacking = false;
     private PlayerInput m_playerInput;
-    private AudioSource m_audioSource;
+    private AudioSource m_attackingSoundEffect;
 
     private PlayerDeathLogic m_playerDeathLogic;
 
@@ -77,8 +77,8 @@ public class Sword : PowerupOrDebuff
 
     void Attack()
     {
-        if (m_audioSource)
-            m_audioSource.Play();
+        if (m_attackingSoundEffect)
+            m_attackingSoundEffect.Play();
         m_playerDeathLogic = GetComponent<PlayerDeathLogic>();
         m_playerDeathLogic.m_invincible = true;
         m_attacking = true;

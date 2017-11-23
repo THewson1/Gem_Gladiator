@@ -15,7 +15,7 @@ public abstract class PickupGameObject : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            GameObject soundEffect = Instantiate(new GameObject());
+            GameObject soundEffect = Instantiate(new GameObject(gameObject.name + " sound"));
             AudioSource audioSource = soundEffect.AddComponent<AudioSource>();
             audioSource.clip = m_pickupSoundEffect.clip;
             audioSource.volume = m_pickupSoundEffect.volume;

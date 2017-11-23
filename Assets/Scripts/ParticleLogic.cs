@@ -71,7 +71,7 @@ public class ParticleLogic : MonoBehaviour {
         for (int i = 0; i < m_particleEmitters.Length; i ++) 
         {
             m_particleEmitters[i].Play();
-            Debug.Log("particle " + m_particlePrefab.name + " was played");
+            //Debug.Log("particle " + m_particlePrefab.name + " was played");
         }
     }
 

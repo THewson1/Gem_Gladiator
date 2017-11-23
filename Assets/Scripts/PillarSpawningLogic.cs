@@ -26,7 +26,7 @@ public class PillarSpawningLogic : MonoBehaviour {
 
     void SpawnPillar(Transform loaction)
     {
-        Instantiate(m_pillarPrefab, loaction);
+        Instantiate(m_pillarPrefab, loaction).transform.position = loaction.position;
     }
 
 }
