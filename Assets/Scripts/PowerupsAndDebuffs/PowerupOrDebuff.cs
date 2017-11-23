@@ -27,6 +27,7 @@ public abstract class PowerupOrDebuff : MonoBehaviour {
     {
         yield return new WaitForSeconds(time);
         Uninitialize();
+        Destroy(m_audioSource);
         Destroy(this);
     }
 }
