@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class InGameUILogic : MonoBehaviour {
 
+    public bool m_activatePlayer1;
+    public bool m_activatePlayer2;
+
     public short m_lifeCounter; // this should be an array of heart images
     public int m_seconds;
     public int m_minutes;
@@ -44,10 +47,14 @@ public class InGameUILogic : MonoBehaviour {
         }
 
         // Gem Counter
-        if (m_p1GemCounter)
-            m_p1GemCounter.text = "Gems: " + m_gc.m_amountOfGems[0].ToString();
-        if (m_p2GemCounter)
-            m_p2GemCounter.text = "Gems: " + m_gc.m_amountOfGems[1].ToString();
+        if (m_activatePlayer1)
+            if (m_p1GemCounter)
+                m_p1GemCounter.text = "Gems: " + m_gc.m_amountOfGems[0].ToString();
+        if (m_activatePlayer2)
+        {
+            if (m_p2GemCounter)
+                m_p2GemCounter.text = "Gems: " + m_gc.m_amountOfGems[1].ToString();
+        }
 
         // DashCooldown & attackCooldown
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -55,32 +62,38 @@ public class InGameUILogic : MonoBehaviour {
         {
             PlayerInput playerInput = player.GetComponent<PlayerInput>();
 
-            // Player 1 dash bar
-            if (playerInput.m_playerNumber == 0)
+            if (m_activatePlayer1)
             {
-                float normalizedDodge = playerInput.m_dodging / playerInput.m_dodgeCooldown;
-                m_p1DashCooldownBar.fillAmount = normalizedDodge;
+                // Player 1 dash bar
+                if (playerInput.m_playerNumber == 0)
+                {
+                    float normalizedDodge = playerInput.m_dodging / playerInput.m_dodgeCooldown;
+                    m_p1DashCooldownBar.fillAmount = normalizedDodge;
+                }
+
+                // Player 1 attack bar
+                if (playerInput.m_playerNumber == 0)
+                {
+                    float normalizedAttack = playerInput.m_attacking / playerInput.m_attackCooldown;
+                    m_p1AttackCooldownBar.fillAmount = normalizedAttack;
+                }
             }
 
-            // PLayer 2 dash bar
-            if (playerInput.m_playerNumber == 1)
+            if (m_activatePlayer2)
             {
-                float normalizedDodge = playerInput.m_dodging / playerInput.m_dodgeCooldown;
-                m_p2DashCooldownBar.fillAmount = normalizedDodge;
-            }
+                // PLayer 2 dash bar
+                if (playerInput.m_playerNumber == 1)
+                {
+                    float normalizedDodge = playerInput.m_dodging / playerInput.m_dodgeCooldown;
+                    m_p2DashCooldownBar.fillAmount = normalizedDodge;
+                }
 
-            // Player 1 attack bar
-            if (playerInput.m_playerNumber == 0)
-            {
-                float normalizedAttack = playerInput.m_attacking / playerInput.m_attackCooldown;
-                m_p1AttackCooldownBar.fillAmount = normalizedAttack;
-            }
-
-            // PLayer 2 attack bar
-            if (playerInput.m_playerNumber == 1)
-            {
-                float normalizedAttack = playerInput.m_attacking / playerInput.m_attackCooldown;
-                m_p2AttackCooldownBar.fillAmount = normalizedAttack;
+                // PLayer 2 attack bar
+                if (playerInput.m_playerNumber == 1)
+                {
+                    float normalizedAttack = playerInput.m_attacking / playerInput.m_attackCooldown;
+                    m_p2AttackCooldownBar.fillAmount = normalizedAttack;
+                }
             }
         }
 

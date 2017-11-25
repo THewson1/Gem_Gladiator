@@ -66,7 +66,11 @@ public class GameController : MonoBehaviour {
 
     private void CreatePlayer(int i)
     {
-        GameObject newPlayer = Instantiate(m_playerPrefab, new Vector3(i - m_amountOfPlayers / 2, 1, 0) + m_playerSpawnOffset, Quaternion.identity);
+        bool evenNumber = (m_amountOfPlayers % 2 > 0)? false : true;
+        float xpos = i - m_amountOfPlayers / 2;
+        if (evenNumber)
+            xpos += 0.5f;
+        GameObject newPlayer = Instantiate(m_playerPrefab, new Vector3(xpos, 1, 0) + m_playerSpawnOffset, Quaternion.identity);
         Instantiate(m_playerIcons[i], newPlayer.transform);
         m_listOfPlayers.Add(newPlayer);
         newPlayer.transform.Find("Glen").Find("gladiator_lowpoly:Mesh").gameObject.GetComponent<Renderer>().material = m_playerTextures[i];

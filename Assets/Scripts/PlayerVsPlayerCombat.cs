@@ -7,15 +7,15 @@ public class PlayerVsPlayerCombat : MonoBehaviour {
     public float m_range = 1;
     public float m_knockbackForce = 1;
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
-
     public void TryToHitPlayers()
     {
+        Invoke("HitPlayer", 0.5f);
+    }
+
+    private void HitPlayer()
+    {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach(GameObject player in players)
+        foreach (GameObject player in players)
         {
             if (player != gameObject)
             {
