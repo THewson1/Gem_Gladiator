@@ -24,11 +24,14 @@ public class SeekPlayer : MonoBehaviour {
 
         for (int i = 0; i < gc.m_listOfPlayers.Count; i ++)
         {
-            float newDistance = (gc.m_listOfPlayers[i].transform.position - transform.position).magnitude;
-            if (newDistance < currentMinDist && (targetRange == 0 || newDistance < targetRange))
+            if (gc.m_listOfPlayers[i].activeInHierarchy == true)
             {
-                currentMinDist = newDistance;
-                closestPlayer = gc.m_listOfPlayers[i];
+                float newDistance = (gc.m_listOfPlayers[i].transform.position - transform.position).magnitude;
+                if (newDistance < currentMinDist && (targetRange == 0 || newDistance < targetRange))
+                {
+                    currentMinDist = newDistance;
+                    closestPlayer = gc.m_listOfPlayers[i];
+                }
             }
         }
 
