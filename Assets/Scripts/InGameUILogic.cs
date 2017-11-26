@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameUILogic : MonoBehaviour {
+public class InGameUILogic : MonoBehaviour
+{
 
     public bool m_activatePlayer1;
     public bool m_activatePlayer2;
 
     public short m_lifeCounter; // this should be an array of heart images
-    public int m_seconds;
-    public int m_minutes;
-        
+    private int m_seconds;
+    private int m_minutes;
+
     GameController m_gc;
     Canvas m_canvas;
     public Text m_p1GemCounter;
@@ -21,27 +22,33 @@ public class InGameUILogic : MonoBehaviour {
     public Image m_p1AttackCooldownBar;
     public Image m_p2AttackCooldownBar;
     public Text m_timer;
-    
+    public List<Image> m_p1Modifiers;
+    public List<Image> m_p2Modifiers;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         GameObject go = GameObject.FindGameObjectWithTag("GameController");
 
         m_gc = go.GetComponent<GameController>();
         m_canvas = GetComponent<Canvas>();
-       }
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         // Time Displayer
         int tp = (int)m_gc.m_secondsPassed;
 
-        if(tp >=60) {
+        if (tp >= 60)
+        {
             m_minutes = tp / 60;
-            m_seconds = (tp % 60 >= 0)? tp % 60 : 0;
-            m_timer.text = m_minutes.ToString() + ":" + ((m_seconds >= 10)? m_seconds.ToString() : "0" + m_seconds.ToString());
-        }else{
+            m_seconds = (tp % 60 >= 0) ? tp % 60 : 0;
+            m_timer.text = m_minutes.ToString() + ":" + ((m_seconds >= 10) ? m_seconds.ToString() : "0" + m_seconds.ToString());
+        }
+        else
+        {
             m_seconds = tp;
             m_timer.text = "0:" + ((m_seconds >= 10) ? m_seconds.ToString() : "0" + m_seconds.ToString());
         }
@@ -58,7 +65,7 @@ public class InGameUILogic : MonoBehaviour {
 
         // DashCooldown & attackCooldown
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach(GameObject player in players)
+        foreach (GameObject player in players)
         {
             PlayerInput playerInput = player.GetComponent<PlayerInput>();
 
@@ -97,5 +104,56 @@ public class InGameUILogic : MonoBehaviour {
             }
         }
 
-    }  
+        UpdateModifiers();
+
+    }
+
+    void UpdateModifiers()
+    {
+        GameObject thisPlayer = null;
+        PowerupOrDebuff[] modifiers;
+
+        if (m_activatePlayer1)
+        {
+            foreach (GameObject player in m_gc.m_listOfPlayers)
+            {
+                if (player.GetComponent<PlayerInput>().m_playerNumber == 0)
+                    thisPlayer = player;
+            }
+            modifiers = thisPlayer.GetComponents<PowerupOrDebuff>();
+            for (int i = 0; i < m_p1Modifiers.Count; i ++)
+            {
+                if (i < modifiers.Length)
+                {
+                    m_p1Modifiers[i].enabled = true;
+                    m_p1Modifiers[i].sprite = modifiers[i].m_image;
+                }
+                else
+                {
+                    m_p1Modifiers[i].enabled = false;
+                }
+            }
+        }
+        if (m_activatePlayer2)
+        {
+            foreach (GameObject player in m_gc.m_listOfPlayers)
+            {
+                if (player.GetComponent<PlayerInput>().m_playerNumber == 1)
+                    thisPlayer = player;
+            }
+            modifiers = thisPlayer.GetComponents<PowerupOrDebuff>();
+            for (int i = 0; i < m_p2Modifiers.Count; i++)
+            {
+                if (i < modifiers.Length)
+                {
+                    m_p2Modifiers[i].enabled = true;
+                    m_p2Modifiers[i].sprite = modifiers[i].m_image;
+                }
+                else
+                {
+                    m_p2Modifiers[i].enabled = false;
+                }
+            }
+        }
+    }
 }
