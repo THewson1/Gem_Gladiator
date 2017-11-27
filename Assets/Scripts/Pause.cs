@@ -2,37 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using InControl;
-using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 
     public GameObject pauseMenu;
+    /*
+        // Use this for initialization
+        void Start () {
 
-    // Update is called once per frame
+        }
+   */
+
+        // Update is called once per frame
     void Update ()
     {
         foreach (InputDevice device in InputManager.Devices)
         {
-            if (device.MenuWasPressed || Input.GetKeyDown(KeyCode.Escape))
+            if (device.Action4.WasPressed)
             {
-                if (Time.timeScale != 0)
-                    PauseGame();
-                else if (Time.timeScale == 0)
-                    PlayGame();
-            }   
+                PauseGame();
+            }
+            
         }
-    }
 
-    public void RestartCurrentLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        PlayGame();
-    }
-
-    public void PlayGame()
-    {
-        Time.timeScale = 1;
-        pauseMenu.SetActive(false);
     }
 
     public void PauseGame()

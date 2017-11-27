@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour {
     public float m_dodgeCooldown = 2f;
     public float m_attackCooldown = 1f;
     private PlayerController m_Character; // A reference to the PlayerController on the object
-    private InputDevice m_usersController = null;
+    private InputDevice m_usersController = new InputDevice("none");
     public int m_playerNumber = -1;
 
     private Vector3 m_move;
@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour {
     {
         get { return m_playerNumber; }
         set { m_playerNumber = value;
-            if (InputManager.Devices.Count > 0 && m_playerNumber < InputManager.Devices.Count)
+            if (InputManager.Devices.Count > 0 && InputManager.Devices.Count < m_playerNumber)
                 m_usersController = InputManager.Devices[m_playerNumber];
         }
     }
@@ -40,13 +40,40 @@ public class PlayerInput : MonoBehaviour {
         float h = 0;
         float v = 0;
 
-        if (m_usersController == null)
+        switch (InputManager.Devices.Count)
         {
-            CheckKeyboardControls(out h, out v);
-        }
-        else
-        {
-            CheckControllerControls(out h, out v);
+            case (0):
+                //keyboard controls
+                CheckKeyboardControls(out h, out v);
+                break;
+
+            case (1):
+                GameController Gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+                //if singlePlayer
+                if (Gc.m_amountOfPlayers == 1)
+                {
+                    CheckControllerControls(out h, out v);
+                }
+
+                //if multiPlayer
+                if (Gc.m_amountOfPlayers > 1)
+                {
+                    if (m_playerNumber == 0)
+                    {
+                        CheckKeyboardControls(out h, out v);
+                    }
+                    else
+                    {
+                        m_usersController = InputManager.Devices[m_playerNumber - 1];
+                        CheckControllerControls(out h, out v);
+                    }
+                }
+                break;
+
+            case (2):
+                m_usersController = InputManager.Devices[m_playerNumber];
+                CheckControllerControls(out h, out v);
+                break;
         }
 
         // we use world-relative directions in the case of no main camera

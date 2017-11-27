@@ -26,8 +26,7 @@ public class ParticleLogic : MonoBehaviour {
     public bool m_onTriggerStay;
     public bool m_onTriggerExit;
 
-    public string[] m_tagsToCollideWith;
-    private List<Collider> m_obJectsToCollideWith = new List<Collider>();
+    public string m_requiredTag = "NULL";
     public float m_requiredForce = 0;
 
     public bool m_triggeredByMovement;
@@ -44,10 +43,6 @@ public class ParticleLogic : MonoBehaviour {
             {
                 m_particleEmitters[i].Play();
             }
-        }
-        foreach (string tag in m_tagsToCollideWith)
-        {
-            m_obJectsToCollideWith.Add(GameObject.FindGameObjectWithTag(tag).GetComponent<Collider>());
         }
     }
 	
@@ -76,20 +71,14 @@ public class ParticleLogic : MonoBehaviour {
         for (int i = 0; i < m_particleEmitters.Length; i ++) 
         {
             m_particleEmitters[i].Play();
-            Debug.Log("particle " + m_particlePrefab.name + " was played");
+            //Debug.Log("particle " + m_particlePrefab.name + " was played");
         }
     }
 
-    bool CheckCollider(Collider other)
+    bool CheckTag(string tag)
     {
-        //Debug.Log(other + " : " + transform.name);
-        foreach (Collider col in m_obJectsToCollideWith)
-        {
-            if (col == other)
-            {
-                return true;
-            }
-        }
+        if (m_requiredTag == "NULL" || m_requiredTag == tag)
+            return true;
         return false;
     }
 
@@ -97,7 +86,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onCollisionEnter)
         {
-            if (CheckCollider(collision.collider))
+            if (CheckTag(collision.gameObject.tag))
             {
                 if (collision.relativeVelocity.magnitude > m_requiredMagnitude)
                 {
@@ -109,7 +98,7 @@ public class ParticleLogic : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (CheckCollider(collision.collider))
+        if (CheckTag(collision.gameObject.tag))
         {
             if (m_requiredForce > 0 && collision.relativeVelocity.magnitude > m_requiredMagnitude)
             {
@@ -122,7 +111,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onCollisionExit)
         {
-            if (CheckCollider(collision.collider))
+            if (CheckTag(collision.gameObject.tag))
             {
                 if (collision.relativeVelocity.magnitude > m_requiredMagnitude)
                 {
@@ -136,7 +125,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerEnter)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
@@ -147,7 +136,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerStay)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
@@ -158,7 +147,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerExit)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
