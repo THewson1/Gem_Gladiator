@@ -9,7 +9,6 @@ public class InGameUILogic : MonoBehaviour
     public bool m_activatePlayer1;
     public bool m_activatePlayer2;
 
-    public short m_lifeCounter; // this should be an array of heart images
     private int m_seconds;
     private int m_minutes;
 
@@ -25,18 +24,51 @@ public class InGameUILogic : MonoBehaviour
     public List<Image> m_p1Modifiers;
     public List<Image> m_p2Modifiers;
 
+    public List<Image> m_player1Lives;
+    public List<Image> m_player2Lives;
+
     // Use this for initialization
     void Start()
     {
+
         GameObject go = GameObject.FindGameObjectWithTag("GameController");
 
         m_gc = go.GetComponent<GameController>();
         m_canvas = GetComponent<Canvas>();
+        
+        for (int i = 0; i!= m_player1Lives.Count; i++) {
+            m_player1Lives[i].enabled = false;
+        }
+
+        for(int i = 0; i != m_player2Lives.Count; i++) {
+            m_player2Lives[i].enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Life Counter
+        if  (m_activatePlayer1){
+            for (int i = 0; i!= 2; i++) {
+                m_player1Lives[i].enabled = false;
+            }
+
+            PlayerDeathLogic lives =  m_gc.m_listOfPlayers[0].GetComponent<PlayerDeathLogic>();
+            for(int i = 0; i < lives.m_lives - 1; i++) {
+                m_player1Lives[i].enabled = true;
+            }           
+        }
+        if(m_activatePlayer2) {
+            for(int i = 0; i != 2; i++) {
+                m_player2Lives[i].enabled = false;
+            }
+
+            PlayerDeathLogic lives = m_gc.m_listOfPlayers[1].GetComponent<PlayerDeathLogic>();
+            for(int i = 0; i < lives.m_lives -1; i++) {
+                m_player2Lives[i].enabled = true;
+            }
+        }
 
         // Time Displayer
         int tp = (int)m_gc.m_secondsPassed;
