@@ -21,7 +21,6 @@ public class ControllerMenuSupport : MonoBehaviour {
             m_currentButton = 0;
         m_currentButton = m_buttonToStartOn;
         m_gem = Instantiate(m_gemPrefab, transform);
-        Debug.Log(m_gem);
     }
 
     // Update is called once per frame
