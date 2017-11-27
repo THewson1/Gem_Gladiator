@@ -78,6 +78,18 @@ public class GameController : MonoBehaviour {
         pi.PlayerNumber = i;
         pi.enabled = false;
         m_amountOfGems.Add(i, 0);
+        // fix floating player
+        newPlayer.GetComponent<BounceInternaly>().enabled = false;
+        Invoke("EnablePlayerBouncing", 2);
+    }
+
+    void EnablePlayerBouncing()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].GetComponent<BounceInternaly>().enabled = true;
+        }
     }
 
     void EnableBoulderBouncing()
