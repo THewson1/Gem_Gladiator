@@ -9,6 +9,7 @@ public class InGameUILogic : MonoBehaviour
     public bool m_activatePlayer1;
     public bool m_activatePlayer2;
 
+    public short m_lifeCounter; // this should be an array of heart images
     private int m_seconds;
     private int m_minutes;
 
