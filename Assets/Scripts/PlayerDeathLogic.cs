@@ -16,7 +16,10 @@ public class PlayerDeathLogic : MonoBehaviour {
         if (!m_invincible)
         {
             m_lives--;
-            Instantiate(m_deadPlayer, transform.position, transform.rotation);
+            GameObject deadPlayer = Instantiate(m_deadPlayer, transform.position, transform.rotation);
+            // this next line is a very long, hard coded, way of finding the texture and putting it on the dead player.
+            deadPlayer.transform.Find("gladiator_lowpoly:Mesh").gameObject.GetComponent<Renderer>().material = transform.Find("Glen").Find("gladiator_lowpoly:Mesh").gameObject.GetComponent<Renderer>().material;
+
             gameObject.SetActive(false);
 
             // remove all powerups and debuffs
