@@ -56,11 +56,11 @@ public class InGameUILogic : MonoBehaviour
         // Gem Counter
         if (m_activatePlayer1)
             if (m_p1GemCounter)
-                m_p1GemCounter.text = "Gems: " + m_gc.m_amountOfGems[0].ToString();
+                m_p1GemCounter.text = m_gc.m_amountOfGems[0].ToString();
         if (m_activatePlayer2)
         {
             if (m_p2GemCounter)
-                m_p2GemCounter.text = "Gems: " + m_gc.m_amountOfGems[1].ToString();
+                m_p2GemCounter.text = m_gc.m_amountOfGems[1].ToString();
         }
 
         // DashCooldown & attackCooldown
