@@ -161,52 +161,52 @@ public class ParticleLogic : MonoBehaviour {
     }
 }
 
-#if UNITY_EDITOR || UNITY_EDITOR_WIN
-[CustomEditor(typeof(ParticleLogic))]
-public class ParticleLogicEditor : Editor
-{
-    override public void OnInspectorGUI()
-    {
-        var myScript = target as ParticleLogic;
+//#if UNITY_EDITOR || UNITY_EDITOR_WIN
+//[CustomEditor(typeof(ParticleLogic))]
+//public class ParticleLogicEditor : Editor
+//{
+//    override public void OnInspectorGUI()
+//    {
+//        var myScript = target as ParticleLogic;
 
-        myScript.m_particlePrefab = EditorGUILayout.ObjectField("Particle", myScript.m_particlePrefab, typeof(GameObject), true) as GameObject;
-        myScript.m_offset = EditorGUILayout.Vector3Field("Offset From This", myScript.m_offset);
-        myScript.m_alwaysActive = EditorGUILayout.Toggle("Always Active", myScript.m_alwaysActive);
-        myScript.m_mustBeTouchingGround = EditorGUILayout.Toggle("Must Be Touching Ground", myScript.m_mustBeTouchingGround);
+//        myScript.m_particlePrefab = EditorGUILayout.ObjectField("Particle", myScript.m_particlePrefab, typeof(GameObject), true) as GameObject;
+//        myScript.m_offset = EditorGUILayout.Vector3Field("Offset From This", myScript.m_offset);
+//        myScript.m_alwaysActive = EditorGUILayout.Toggle("Always Active", myScript.m_alwaysActive);
+//        myScript.m_mustBeTouchingGround = EditorGUILayout.Toggle("Must Be Touching Ground", myScript.m_mustBeTouchingGround);
 
-        if (myScript.m_mustBeTouchingGround)
-        {
-            myScript.m_range = EditorGUILayout.FloatField("Height Of Transform Origin", myScript.m_range);
-        }
+//        if (myScript.m_mustBeTouchingGround)
+//        {
+//            myScript.m_range = EditorGUILayout.FloatField("Height Of Transform Origin", myScript.m_range);
+//        }
 
-        if (!myScript.m_alwaysActive)
-        {
-            myScript.m_triggeredByCollision = EditorGUILayout.Toggle("Triggered By Collision", myScript.m_triggeredByCollision);
-            if (myScript.m_triggeredByCollision)
-            {
-                myScript.m_onCollisionEnter = EditorGUILayout.Toggle("use OnCollisionEnter", myScript.m_onCollisionEnter);
-                myScript.m_onCollisionStay = EditorGUILayout.Toggle("use OnCollisionStay", myScript.m_onCollisionStay);
-                myScript.m_onCollisionExit = EditorGUILayout.Toggle("use OnCollisionExit", myScript.m_onCollisionExit);
-                myScript.m_requiredTag = EditorGUILayout.TextField("required tag of collider", myScript.m_requiredTag);
-                myScript.m_requiredForce = EditorGUILayout.FloatField("required force of collision", myScript.m_requiredForce);
-            }
+//        if (!myScript.m_alwaysActive)
+//        {
+//            myScript.m_triggeredByCollision = EditorGUILayout.Toggle("Triggered By Collision", myScript.m_triggeredByCollision);
+//            if (myScript.m_triggeredByCollision)
+//            {
+//                myScript.m_onCollisionEnter = EditorGUILayout.Toggle("use OnCollisionEnter", myScript.m_onCollisionEnter);
+//                myScript.m_onCollisionStay = EditorGUILayout.Toggle("use OnCollisionStay", myScript.m_onCollisionStay);
+//                myScript.m_onCollisionExit = EditorGUILayout.Toggle("use OnCollisionExit", myScript.m_onCollisionExit);
+//                myScript.m_requiredTag = EditorGUILayout.TextField("required tag of collider", myScript.m_requiredTag);
+//                myScript.m_requiredForce = EditorGUILayout.FloatField("required force of collision", myScript.m_requiredForce);
+//            }
 
-            myScript.m_triggeredByTrigger = EditorGUILayout.Toggle("Triggered By Trigger", myScript.m_triggeredByTrigger);
-            if (myScript.m_triggeredByTrigger)
-            {
-                myScript.m_onTriggerEnter = EditorGUILayout.Toggle("use OnTriggerEnter", myScript.m_onTriggerEnter);
-                myScript.m_onTriggerStay = EditorGUILayout.Toggle("use OnTriggerStay", myScript.m_onTriggerStay);
-                myScript.m_onTriggerExit = EditorGUILayout.Toggle("use OnTriggerExit", myScript.m_onTriggerExit);
-                myScript.m_requiredTag = EditorGUILayout.TextField("required tag of collider", myScript.m_requiredTag);
-            }
+//            myScript.m_triggeredByTrigger = EditorGUILayout.Toggle("Triggered By Trigger", myScript.m_triggeredByTrigger);
+//            if (myScript.m_triggeredByTrigger)
+//            {
+//                myScript.m_onTriggerEnter = EditorGUILayout.Toggle("use OnTriggerEnter", myScript.m_onTriggerEnter);
+//                myScript.m_onTriggerStay = EditorGUILayout.Toggle("use OnTriggerStay", myScript.m_onTriggerStay);
+//                myScript.m_onTriggerExit = EditorGUILayout.Toggle("use OnTriggerExit", myScript.m_onTriggerExit);
+//                myScript.m_requiredTag = EditorGUILayout.TextField("required tag of collider", myScript.m_requiredTag);
+//            }
 
-            myScript.m_triggeredByMovement = EditorGUILayout.Toggle("Triggered By Movement", myScript.m_triggeredByMovement);
-            if (myScript.m_triggeredByMovement)
-            {
-                myScript.m_requiredMagnitude = EditorGUILayout.FloatField("required magnitude of movement", myScript.m_requiredMagnitude);
-            }
-        }
+//            myScript.m_triggeredByMovement = EditorGUILayout.Toggle("Triggered By Movement", myScript.m_triggeredByMovement);
+//            if (myScript.m_triggeredByMovement)
+//            {
+//                myScript.m_requiredMagnitude = EditorGUILayout.FloatField("required magnitude of movement", myScript.m_requiredMagnitude);
+//            }
+//        }
 
-    }
-}
-#endif
+//    }
+//}
+//#endif

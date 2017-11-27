@@ -9,6 +9,7 @@ public class InGameUILogic : MonoBehaviour
     public bool m_activatePlayer1;
     public bool m_activatePlayer2;
 
+    public short m_lifeCounter; // this should be an array of heart images
     private int m_seconds;
     private int m_minutes;
 
@@ -88,11 +89,11 @@ public class InGameUILogic : MonoBehaviour
         // Gem Counter
         if (m_activatePlayer1)
             if (m_p1GemCounter)
-                m_p1GemCounter.text = "Gems: " + m_gc.m_amountOfGems[0].ToString();
+                m_p1GemCounter.text = m_gc.m_amountOfGems[0].ToString();
         if (m_activatePlayer2)
         {
             if (m_p2GemCounter)
-                m_p2GemCounter.text = "Gems: " + m_gc.m_amountOfGems[1].ToString();
+                m_p2GemCounter.text = m_gc.m_amountOfGems[1].ToString();
         }
 
         // DashCooldown & attackCooldown
