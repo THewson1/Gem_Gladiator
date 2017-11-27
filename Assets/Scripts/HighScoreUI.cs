@@ -12,11 +12,19 @@ public class HighScoreUI : MonoBehaviour {
     [SerializeField]
     private string highScoresFileLocation = "HighScores";
 
-    void OnEnable()
+    void Start()
     {
         m_highScores = m_highScores.Load(highScoresFileLocation + ".json");
-        m_highScores.AddHighScore("SGK", Random.Range(0, 100));
+    }
+
+    void AddHighScore(string name, int score)
+    {
+        m_highScores.AddHighScore(name, score);
         m_highScores.Save(highScoresFileLocation + ".json");
+    }
+
+    void OnEnable()
+    {
         SortAndDisplayHighScores();
     }
 

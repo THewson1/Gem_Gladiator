@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour {
     {
         get { return m_playerNumber; }
         set { m_playerNumber = value;
-            if (InputManager.Devices.Count > 0)
+            if (InputManager.Devices.Count > 0 && InputManager.Devices.Count < m_playerNumber)
                 m_usersController = InputManager.Devices[m_playerNumber];
         }
     }

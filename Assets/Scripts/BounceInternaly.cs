@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class BounceInternaly : MonoBehaviour {
 
-    public GameObject m_platform;
+    private GameObject m_platform;
     public List<GameObject> m_objectsToBounceTowards;
     private float m_radius;
     public float m_bounceForce;
@@ -25,7 +25,8 @@ public class BounceInternaly : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        float distanceFromCenter = (transform.position - m_platform.transform.position).magnitude;
+        Vector3 directionFromCenter = (transform.position - m_platform.transform.position);
+        float distanceFromCenter = directionFromCenter.magnitude;
 
         if (distanceFromCenter > m_radius)
         {
