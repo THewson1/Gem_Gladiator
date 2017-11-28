@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Button_Restart_Logic_UI : MonoBehaviour {
+using UnityEngine.EventSystems;
+
+public class Button_Restart_Logic_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
 
     public GameObject m_hand;
     public GameObject m_handToChange;
-        
-    private void OnMouseOver () {
+
+    public void OnPointerEnter (PointerEventData eventData) {
         m_handToChange.SetActive(false);
         m_hand.SetActive(true);
-        Debug.Log("EnterWorking");
-    }
-    private void OnMouseEnter () {
-        Debug.Log("EnterEnter");
     }
 
-    private void OnMouseExit () {
+    public void OnPointerExit (PointerEventData eventData) {
         m_handToChange.SetActive(true);
         m_hand.SetActive(false);
     }
-    
 }
