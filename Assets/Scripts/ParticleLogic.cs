@@ -93,6 +93,19 @@ public class ParticleLogic : MonoBehaviour {
         return false;
     }
 
+    bool CheckTag(string tag)
+    {
+        //Debug.Log(other + " : " + transform.name);
+        foreach (string t in m_tagsToCollideWith)
+        {
+            if (t == tag)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (m_onCollisionEnter)
@@ -136,7 +149,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerEnter)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
@@ -147,7 +160,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerStay)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
@@ -158,7 +171,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerExit)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
