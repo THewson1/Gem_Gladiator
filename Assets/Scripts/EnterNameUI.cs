@@ -22,7 +22,8 @@ public class EnterNameUI : MonoBehaviour {
 	
     public void ApplyHighScore()
     {
-        m_highscoreUI.GetComponent<HighScoreUI>().AddHighScore(m_inputField.text, m_finalScore);
+        if (m_inputField.text != "")
+            m_highscoreUI.GetComponent<HighScoreUI>().AddHighScore(m_inputField.text, m_finalScore);
         m_highscoreUI.SetActive(true);
         gameObject.SetActive(false);
     }

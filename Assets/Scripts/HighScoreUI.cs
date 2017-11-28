@@ -21,6 +21,7 @@ public class HighScoreUI : MonoBehaviour {
 
     void OnEnable()
     {
+        m_highScores = m_highScores.Load(highScoresFileLocation + ".json");
         SortAndDisplayHighScores();
     }
 
