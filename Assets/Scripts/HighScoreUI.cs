@@ -17,7 +17,7 @@ public class HighScoreUI : MonoBehaviour {
         m_highScores = m_highScores.Load(highScoresFileLocation + ".json");
     }
 
-    void AddHighScore(string name, int score)
+    public void AddHighScore(string name, int score)
     {
         m_highScores.AddHighScore(name, score);
         m_highScores.Save(highScoresFileLocation + ".json");
