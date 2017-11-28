@@ -13,13 +13,20 @@ public class Pause : MonoBehaviour {
     {
         foreach (InputDevice device in InputManager.Devices)
         {
-            if (device.MenuWasPressed || Input.GetKeyDown(KeyCode.Escape))
+            if (device.MenuWasPressed)
             {
                 if (Time.timeScale != 0)
                     PauseGame();
                 else if (Time.timeScale == 0)
                     PlayGame();
             }   
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            if(Time.timeScale != 0)
+                PauseGame();
+            else if(Time.timeScale == 0)
+                PlayGame();
         }
     }
 
