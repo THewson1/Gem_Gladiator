@@ -31,7 +31,6 @@ public class ParticleLogic : MonoBehaviour {
     public float m_requiredForce = 0;
 
     public bool m_triggeredByMovement;
-    public float m_requiredMagnitude;
 
     // Use this for initialization
     void Start () {
@@ -116,9 +115,13 @@ public class ParticleLogic : MonoBehaviour {
         {
             if (CheckCollider(collision.collider))
             {
-                if (collision.relativeVelocity.magnitude > m_requiredMagnitude)
+                if (collision.relativeVelocity.magnitude > m_requiredForce)
                 {
                     Emit();
+                }
+                else
+                {
+                    Debug.Log(gameObject.name + "'s " + m_particle.name + " particle needed at least " + collision.relativeVelocity.magnitude  + " force to activate");
                 }
             }
         }
@@ -128,7 +131,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (CheckCollider(collision.collider))
         {
-            if (m_requiredForce > 0 && collision.relativeVelocity.magnitude > m_requiredMagnitude)
+            if (m_requiredForce > 0 && collision.relativeVelocity.magnitude > m_requiredForce)
             {
                 Emit();
             }
@@ -141,7 +144,7 @@ public class ParticleLogic : MonoBehaviour {
         {
             if (CheckCollider(collision.collider))
             {
-                if (collision.relativeVelocity.magnitude > m_requiredMagnitude)
+                if (collision.relativeVelocity.magnitude > m_requiredForce)
                 {
                     Emit();
                 }
