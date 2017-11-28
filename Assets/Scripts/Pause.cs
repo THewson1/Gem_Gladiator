@@ -15,17 +15,22 @@ public class Pause : MonoBehaviour {
         {
             if (device.MenuWasPressed)
             {
-                if (Time.timeScale != 0)
-                    PauseGame();
-                else if (Time.timeScale == 0)
-                    PlayGame();
+                pauseButtonWasPressed();
             }   
         }
 
         if(Input.GetKeyDown(KeyCode.Escape)) {
-            if(Time.timeScale != 0)
+            pauseButtonWasPressed();
+        }
+    }
+
+    private void pauseButtonWasPressed()
+    {
+        if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<EndGameCondition>().m_gameOver)
+        {
+            if (Time.timeScale != 0)
                 PauseGame();
-            else if(Time.timeScale == 0)
+            else if (Time.timeScale == 0)
                 PlayGame();
         }
     }

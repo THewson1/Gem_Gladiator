@@ -24,7 +24,7 @@ public class SeekPlayer : MonoBehaviour {
 
         for (int i = 0; i < gc.m_listOfPlayers.Count; i ++)
         {
-            if (gc.m_listOfPlayers[i].activeInHierarchy == true)
+            if (gc.m_listOfPlayers[i].activeInHierarchy == true && gc.m_listOfPlayers[i].layer != LayerMask.NameToLayer("Ghost"))
             {
                 float newDistance = (gc.m_listOfPlayers[i].transform.position - transform.position).magnitude;
                 if (newDistance < currentMinDist && (targetRange == 0 || newDistance < targetRange))

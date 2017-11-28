@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour {
     public void LoadSceneByIndex(int sceneIndex) {
         SceneManager.LoadScene(sceneIndex);
+        Time.timeScale = 1;
     }
 
     public void LoadCanvasID (int canvasIndex) {

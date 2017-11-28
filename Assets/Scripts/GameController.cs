@@ -13,9 +13,11 @@ public class GameController : MonoBehaviour {
     public Vector3 m_playerSpawnOffset;
     public Vector3 m_boulderSpawnOffset;
     public Vector3 m_boulderStartingVelocity;
+    public float m_boulderSpawnDelay = 10;
     public int m_pointValueOf1Gem;
     public int m_pointValueOf1Second;
 
+    [HideInInspector]
     public float m_secondsPassed;
     [HideInInspector]
     public Dictionary<int, int> m_amountOfGems = new Dictionary<int, int>();
@@ -42,7 +44,7 @@ public class GameController : MonoBehaviour {
             }
         }
 
-        Invoke("SpawnBoulderAfterFalling", 8);
+        Invoke("SpawnBoulderAfterFalling", m_boulderSpawnDelay);
     }
 
     void SpawnBoulderAfterFalling()
