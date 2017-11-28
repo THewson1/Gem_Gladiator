@@ -12,6 +12,7 @@ public class Freeze : PowerupOrDebuff {
     public override void Initialize()
     {
         GetComponent<PlayerInput>().enabled = false;
+        GetComponent<Animator>().enabled = false;
         m_instantiatedIceBlock = Instantiate(m_iceBlockPrefab, gameObject.transform);
         m_instantiatedIceBlock.transform.position = transform.position;
     }
@@ -25,6 +26,7 @@ public class Freeze : PowerupOrDebuff {
         DestroyAfterTime destroyAfterTime = iceParticles.AddComponent<DestroyAfterTime>();
         destroyAfterTime.m_lifeTime = iceParticles.GetComponent<ParticleSystem>().main.duration;
         GetComponent<PlayerInput>().enabled = true;
+        GetComponent<Animator>().enabled = true;
         Destroy(m_instantiatedIceBlock);
     }
 }
