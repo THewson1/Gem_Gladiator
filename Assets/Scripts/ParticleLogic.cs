@@ -47,7 +47,10 @@ public class ParticleLogic : MonoBehaviour {
         }
         foreach (string tag in m_tagsToCollideWith)
         {
-            m_obJectsToCollideWith.Add(GameObject.FindGameObjectWithTag(tag).GetComponent<Collider>());
+            GameObject go = GameObject.FindGameObjectWithTag(tag);
+            if (go)
+                m_obJectsToCollideWith.Add(go.GetComponent<Collider>());
+                
         }
     }
 	
@@ -69,7 +72,8 @@ public class ParticleLogic : MonoBehaviour {
                 }
             }
         }
-        m_particle.transform.position = transform.position + m_offset;
+        if (transform != null)
+            m_particle.transform.position = transform.position + m_offset;
 	}
      
     void Emit() {
