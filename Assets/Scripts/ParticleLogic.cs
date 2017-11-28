@@ -47,7 +47,10 @@ public class ParticleLogic : MonoBehaviour {
         }
         foreach (string tag in m_tagsToCollideWith)
         {
-            m_obJectsToCollideWith.Add(GameObject.FindGameObjectWithTag(tag).GetComponent<Collider>());
+            GameObject go = GameObject.FindGameObjectWithTag(tag);
+            if (go)
+                m_obJectsToCollideWith.Add(go.GetComponent<Collider>());
+                
         }
     }
 	
@@ -69,7 +72,8 @@ public class ParticleLogic : MonoBehaviour {
                 }
             }
         }
-        m_particle.transform.position = transform.position + m_offset;
+        if (transform != null)
+            m_particle.transform.position = transform.position + m_offset;
 	}
      
     void Emit() {
@@ -86,6 +90,19 @@ public class ParticleLogic : MonoBehaviour {
         foreach (Collider col in m_obJectsToCollideWith)
         {
             if (col == other)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool CheckTag(string tag)
+    {
+        //Debug.Log(other + " : " + transform.name);
+        foreach (string t in m_tagsToCollideWith)
+        {
+            if (t == tag)
             {
                 return true;
             }
@@ -136,7 +153,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerEnter)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
@@ -147,7 +164,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerStay)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
@@ -158,7 +175,7 @@ public class ParticleLogic : MonoBehaviour {
     {
         if (m_onTriggerExit)
         {
-            if (CheckCollider(other))
+            if (CheckTag(other.gameObject.tag))
             {
                 Emit();
             }
