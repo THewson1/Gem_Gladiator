@@ -11,7 +11,7 @@ public class ControllerMenuSupport : MonoBehaviour {
     public int m_buttonToStartOn;
     public Vector3 m_offset;
 
-    private InputDevice m_usersController = new InputDevice("none");
+    private InputDevice m_usersController = null;
     private int m_currentButton;
     private GameObject m_gem;
 
