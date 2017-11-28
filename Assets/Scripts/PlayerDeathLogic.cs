@@ -45,6 +45,7 @@ public class PlayerDeathLogic : MonoBehaviour {
         m_invincible = true;
         gameObject.layer = LayerMask.NameToLayer("Ghost");
         Invoke("MakeVincible", m_invincibilityTimer);
+        GetComponent<Animator>().Play("Idle_Move");
     }
 
     void MakeVincible()

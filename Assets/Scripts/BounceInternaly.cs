@@ -48,5 +48,11 @@ public class BounceInternaly : MonoBehaviour {
             else
                 m_rb.AddForce(reflectionVector * m_bounceForce);
         }
-	}
+
+        //fix for glitching out of arena1
+        if (distanceFromCenter > m_radius + m_radius / 10)
+        {
+            transform.position = directionFromCenter.normalized * m_radius;
+        }
+    }
 }
