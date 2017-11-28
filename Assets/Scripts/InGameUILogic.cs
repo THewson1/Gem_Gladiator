@@ -36,13 +36,21 @@ public class InGameUILogic : MonoBehaviour
 
         m_gc = go.GetComponent<GameController>();
         m_canvas = GetComponent<Canvas>();
-        
-        for (int i = 0; i!= m_player1Lives.Count; i++) {
-            m_player1Lives[i].enabled = false;
+
+        if (m_activatePlayer1)
+        {
+            for (int i = 0; i != m_player1Lives.Count; i++)
+            {
+                m_player1Lives[i].enabled = false;
+            }
         }
 
-        for(int i = 0; i != m_player2Lives.Count; i++) {
-            m_player2Lives[i].enabled = false;
+        if (m_activatePlayer2)
+        {
+            for (int i = 0; i != m_player2Lives.Count; i++)
+            {
+                m_player2Lives[i].enabled = false;
+            }
         }
     }
 
