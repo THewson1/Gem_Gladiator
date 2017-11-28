@@ -19,13 +19,17 @@ public class EnterNameUI : MonoBehaviour {
 
     private void OnEnable()
     {
+        Debug.Log("enabled");
         m_finalScore = m_gc.GetComponent<EndGameCondition>().m_finalScore;
         m_score.text = m_finalScore.ToString();
+        Debug.Log(m_finalScore);
     }
 	
     public void ApplyHighScore()
     {
+        Debug.Log("apply");
         m_highscoreUI.GetComponent<HighScoreUI>().AddHighScore(m_inputField.text, m_finalScore);
         m_highscoreUI.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
