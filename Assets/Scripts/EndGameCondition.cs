@@ -89,19 +89,20 @@ public class EndGameCondition : MonoBehaviour {
 	}
 
     void GameOver() {
-        GameController gC = GetComponent<GameController>();
         switch (m_gameMode)
         {
             case (0):
-                m_finalScore = gC.CalculateFinalScore(m_players);
+                m_finalScore = CalculateFinalScore();
+                Debug.Log(m_finalScore);
                 m_gameOverScreen.SetActive(true);
-       //         Time.timeScale = 0;
+                Time.timeScale = 0;
                 break;
 
             case (1):
-                m_finalScore = gC.CalculateFinalScore(m_players);
+                m_finalScore = CalculateFinalScore();
+                Debug.Log(m_finalScore);
                 m_gameOverScreen.SetActive(true);
-        //        Time.timeScale = 0;
+                Time.timeScale = 0;
                 break;
 
             case (2):
@@ -111,10 +112,22 @@ public class EndGameCondition : MonoBehaviour {
                     {
                         // whoever is not dead has won
                         m_gameOverScreen.SetActive(true);
-        //                Time.timeScale = 0;
+                        Time.timeScale = 0;
                     }
                 }
                 break;
         }
+    }
+
+    public int CalculateFinalScore()
+    {
+        GameController gC = GetComponent<GameController>();
+        int finalScore = 0;
+        foreach (GameObject player in m_players)
+        {
+            finalScore += ( gC.m_amountOfGems[player.GetComponent<PlayerInput>().m_playerNumber] * gC.m_pointValueOf1Gem);
+        }
+        finalScore += ((int)gC.m_secondsPassed * gC.m_pointValueOf1Second);
+        return finalScore;
     }
 }

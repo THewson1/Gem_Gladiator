@@ -113,16 +113,4 @@ public class GameController : MonoBehaviour {
         if (!GetComponent<EndGameCondition>().m_gameOver)
             m_secondsPassed += Time.deltaTime;
     }
-
-
-    public int CalculateFinalScore(GameObject[] players)
-    {
-        int finalScore = 0;
-        foreach (GameObject player in players)
-        {
-            finalScore += (m_amountOfGems[player.GetComponent<PlayerInput>().m_playerNumber] * m_pointValueOf1Gem);
-        }
-        finalScore += ((int)m_secondsPassed * m_pointValueOf1Second);
-        return finalScore;
-    }
 }

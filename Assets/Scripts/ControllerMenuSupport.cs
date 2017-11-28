@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ControllerMenuSupport : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class ControllerMenuSupport : MonoBehaviour {
     public List<GameObject> m_buttons;
     public int m_buttonToStartOn;
     public Vector3 m_offset;
+    public bool m_hasMouseOverEvents = false;
 
     private InputDevice m_usersController = null;
     private int m_currentButton;
@@ -31,16 +33,37 @@ public class ControllerMenuSupport : MonoBehaviour {
             m_usersController = InputManager.Devices[i];
             if (m_usersController.DPadDown.WasPressed)
             {
+                if (m_hasMouseOverEvents)
+                {
+                    Button_Restart_Logic_UI btn = m_buttons[m_currentButton].GetComponent<Button_Restart_Logic_UI>();
+                    btn.Exit();
+                }
                 m_currentButton++;
                 if (m_currentButton >= m_buttons.Count)
                     m_currentButton = 0;
+                if (m_hasMouseOverEvents)
+                {
+                    Button_Restart_Logic_UI btn = m_buttons[m_currentButton].GetComponent<Button_Restart_Logic_UI>();
+                    btn.Enter();
+                }
+
             }
 
             if (m_usersController.DPadUp.WasPressed)
             {
+                if (m_hasMouseOverEvents)
+                {
+                    Button_Restart_Logic_UI btn = m_buttons[m_currentButton].GetComponent<Button_Restart_Logic_UI>();
+                    btn.Exit();
+                }
                 m_currentButton--;
                 if (m_currentButton <= -1)
                     m_currentButton = m_buttons.Count - 1;
+                if (m_hasMouseOverEvents)
+                {
+                    Button_Restart_Logic_UI btn = m_buttons[m_currentButton].GetComponent<Button_Restart_Logic_UI>();
+                    btn.Enter();
+                }
             }
 
             // select
