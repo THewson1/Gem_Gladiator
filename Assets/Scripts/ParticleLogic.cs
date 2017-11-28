@@ -72,7 +72,7 @@ public class ParticleLogic : MonoBehaviour {
                 }
             }
         }
-        if (transform != null)
+        if (m_particle != null)
             m_particle.transform.position = transform.position + m_offset;
 	}
      
