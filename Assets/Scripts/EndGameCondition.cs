@@ -95,13 +95,13 @@ public class EndGameCondition : MonoBehaviour {
             case (0):
                 m_finalScore = gC.CalculateFinalScore(m_players);
                 m_gameOverScreen.SetActive(true);
-                Time.timeScale = 0;
+       //         Time.timeScale = 0;
                 break;
 
             case (1):
                 m_finalScore = gC.CalculateFinalScore(m_players);
                 m_gameOverScreen.SetActive(true);
-                Time.timeScale = 0;
+        //        Time.timeScale = 0;
                 break;
 
             case (2):
@@ -111,7 +111,7 @@ public class EndGameCondition : MonoBehaviour {
                     {
                         // whoever is not dead has won
                         m_gameOverScreen.SetActive(true);
-                        Time.timeScale = 0;
+        //                Time.timeScale = 0;
                     }
                 }
                 break;
