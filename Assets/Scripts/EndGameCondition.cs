@@ -93,13 +93,13 @@ public class EndGameCondition : MonoBehaviour {
         switch (m_gameMode)
         {
             case (0):
-                finalScore = gC.CalculateFinalScore(m_players);
+                m_finalScore = gC.CalculateFinalScore(m_players);
                 m_gameOverScreen.SetActive(true);
                 Time.timeScale = 0;
                 break;
 
             case (1):
-                finalScore = gC.CalculateFinalScore(m_players);
+                m_finalScore = gC.CalculateFinalScore(m_players);
                 m_gameOverScreen.SetActive(true);
                 Time.timeScale = 0;
                 break;
