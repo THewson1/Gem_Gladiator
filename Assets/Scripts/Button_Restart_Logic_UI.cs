@@ -10,11 +10,21 @@ public class Button_Restart_Logic_UI : MonoBehaviour, IPointerEnterHandler, IPoi
     public GameObject m_handToChange;
 
     public void OnPointerEnter (PointerEventData eventData) {
+        Enter();
+    }
+
+    public void OnPointerExit (PointerEventData eventData) {
+        Exit();
+    }
+
+    public void Enter()
+    {
         m_handToChange.SetActive(false);
         m_hand.SetActive(true);
     }
 
-    public void OnPointerExit (PointerEventData eventData) {
+    public void Exit()
+    {
         m_handToChange.SetActive(true);
         m_hand.SetActive(false);
     }

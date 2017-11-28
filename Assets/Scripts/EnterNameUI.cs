@@ -12,14 +12,9 @@ public class EnterNameUI : MonoBehaviour {
     private GameObject m_gc;
     private int m_finalScore = 0;
 
-    private void Start()
-    {
-        m_gc = GameObject.FindGameObjectWithTag("GameController");
-    }
-
     private void OnEnable()
     {
-        Debug.Log("enabled");
+        m_gc = GameObject.FindGameObjectWithTag("GameController");
         m_finalScore = m_gc.GetComponent<EndGameCondition>().m_finalScore;
         m_score.text = m_finalScore.ToString();
         Debug.Log(m_finalScore);
@@ -27,7 +22,6 @@ public class EnterNameUI : MonoBehaviour {
 	
     public void ApplyHighScore()
     {
-        Debug.Log("apply");
         m_highscoreUI.GetComponent<HighScoreUI>().AddHighScore(m_inputField.text, m_finalScore);
         m_highscoreUI.SetActive(true);
         gameObject.SetActive(false);
