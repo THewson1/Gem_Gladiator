@@ -21,7 +21,7 @@ public class HighScores {
         }
         else
         {
-            Debug.Log("creating file located at " + fileLocation);
+            Debug.Log("creating file located at " + filePath);
             File.Create(filePath).Close();
         }
     }
@@ -40,7 +40,7 @@ public class HighScores {
         }
         else
         {
-            Debug.Log("creating file located at " + fileLocation);
+            Debug.Log("creating file located at " + filePath);
             File.Create(filePath).Close();
             HighScores newData = new HighScores();
             return newData;
