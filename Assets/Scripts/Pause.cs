@@ -26,7 +26,7 @@ public class Pause : MonoBehaviour {
         }
     }
 
-    private void pauseButtonWasPressed()
+    public void pauseButtonWasPressed()
     {
         if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<EndGameCondition>().m_gameOver)
         {
