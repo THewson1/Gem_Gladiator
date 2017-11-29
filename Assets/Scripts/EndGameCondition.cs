@@ -6,9 +6,10 @@ using UnityEditor;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndGameCondition : MonoBehaviour {
-
+    public Text m_coopWinText;
     public bool m_singlePlayer;
     public bool m_coop;
     public bool m_versus;
@@ -67,10 +68,24 @@ public class EndGameCondition : MonoBehaviour {
                         if (playerLogic = player.GetComponent<PlayerDeathLogic>())
                         {
                             int playerNumber = player.GetComponent<PlayerInput>().m_playerNumber;
-                            if (playerLogic.m_lives <= 0)
+                            if (playerLogic.m_lives <= 0) {
+                                if(playerNumber == 0)
+                                    m_coopWinText.text = "Winner is player 2!";
+
+                                if(playerNumber == 1)
+                                    m_coopWinText.text = "Winner is player 1!";
+
                                 m_gameOver = true;
-                            if (m_amountOfGemsRequiredToWin != 0 && GetComponent<GameController>().m_amountOfGems[playerNumber] > m_amountOfGemsRequiredToWin)
+                            }
+                            if (m_amountOfGemsRequiredToWin != 0 && GetComponent<GameController>().m_amountOfGems[playerNumber] > m_amountOfGemsRequiredToWin) {
+                                if(playerNumber == 0)
+                                    m_coopWinText.text = "Winner is player 2!";
+
+                                if(playerNumber == 1)
+                                    m_coopWinText.text = "Winner is player 1!";
+
                                 m_gameOver = true;
+                            }
                         }
                     }
                     break;
@@ -91,13 +106,6 @@ public class EndGameCondition : MonoBehaviour {
     void GameOver() {
         switch (m_gameMode)
         {
-            case (0):
-                m_finalScore = CalculateFinalScore();
-                Debug.Log(m_finalScore);
-                m_gameOverScreen.SetActive(true);
-                Time.timeScale = 0;
-                break;
-
             case (1):
                 m_finalScore = CalculateFinalScore();
                 Debug.Log(m_finalScore);
@@ -106,6 +114,13 @@ public class EndGameCondition : MonoBehaviour {
                 break;
 
             case (2):
+                m_finalScore = CalculateFinalScore();
+                Debug.Log(m_finalScore);
+                m_gameOverScreen.SetActive(true);
+                Time.timeScale = 0;
+                break;
+
+            case (3):
                 foreach (GameObject player in m_players)
                 {
                     if (player.GetComponent<PlayerDeathLogic>().m_lives > 0)
