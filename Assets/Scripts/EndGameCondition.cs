@@ -69,20 +69,17 @@ public class EndGameCondition : MonoBehaviour {
                         {
                             int playerNumber = player.GetComponent<PlayerInput>().m_playerNumber;
                             if (playerLogic.m_lives <= 0) {
-                                if(playerNumber == 0)
+                                if (playerNumber == 0)
+                                {
+                                    MakePlayerInvincible(1);
                                     m_coopWinText.text = "Winner is player 2!";
+                                }
 
-                                if(playerNumber == 1)
+                                if (playerNumber == 1)
+                                {
+                                    MakePlayerInvincible(0);
                                     m_coopWinText.text = "Winner is player 1!";
-
-                                m_gameOver = true;
-                            }
-                            if (m_amountOfGemsRequiredToWin != 0 && GetComponent<GameController>().m_amountOfGems[playerNumber] > m_amountOfGemsRequiredToWin) {
-                                if(playerNumber == 0)
-                                    m_coopWinText.text = "Winner is player 2!";
-
-                                if(playerNumber == 1)
-                                    m_coopWinText.text = "Winner is player 1!";
+                                }
 
                                 m_gameOver = true;
                             }
@@ -102,6 +99,18 @@ public class EndGameCondition : MonoBehaviour {
             }
         }
 	}
+
+    void MakePlayerInvincible(int playerNumber)
+    {
+        foreach (GameObject player in m_players)
+        {
+            if (player.GetComponent<PlayerInput>().m_playerNumber == playerNumber)
+            {
+                player.GetComponent<PlayerDeathLogic>().m_invincible = true;
+                player.layer = LayerMask.NameToLayer("Ghost");
+            }
+        }
+    }
 
     void GameOver() {
         switch (m_gameMode)
