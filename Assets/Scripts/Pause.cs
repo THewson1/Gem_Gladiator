@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 
-    public GameObject pauseMenu;
+    public GameObject m_pauseMenu;
+    public AudioSource m_inGameMusic;
+    public AudioSource m_pauseMenuMusic;
 
     // Update is called once per frame
     void Update ()
@@ -29,9 +31,17 @@ public class Pause : MonoBehaviour {
         if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<EndGameCondition>().m_gameOver)
         {
             if (Time.timeScale != 0)
+            {
+                m_inGameMusic.Pause();
                 PauseGame();
+                m_pauseMenuMusic.Play();
+            }
             else if (Time.timeScale == 0)
+            {
+                m_pauseMenuMusic.Pause();
                 PlayGame();
+                m_inGameMusic.UnPause();
+            }
         }
     }
 
@@ -44,13 +54,13 @@ public class Pause : MonoBehaviour {
     public void PlayGame()
     {
         Time.timeScale = 1;
-        pauseMenu.SetActive(false);
+        m_pauseMenu.SetActive(false);
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        m_pauseMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
