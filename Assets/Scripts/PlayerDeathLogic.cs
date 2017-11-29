@@ -11,11 +11,26 @@ public class PlayerDeathLogic : MonoBehaviour {
 
     public bool m_invincible = false;
 
+    private GameObject m_gc;
+
+    private void Start()
+    {
+        m_gc = GameObject.FindGameObjectWithTag("GameController");
+    }
+
     public void Die()
     {
         if (!m_invincible)
         {
             m_lives--;
+            if (m_gc.GetComponent<EndGameCondition>().m_coop)
+            {
+                GameController gc = m_gc.GetComponent<GameController>();
+                foreach(GameObject player in gc.m_listOfPlayers)
+                {
+                    player.GetComponent<PlayerDeathLogic>().m_lives = m_lives;
+                }
+            }
             GameObject deadPlayer = Instantiate(m_deadPlayer, transform.position, transform.rotation);
             // this next line is a very long, hard coded, way of finding the texture and putting it on the dead player.
             deadPlayer.transform.Find("gladiator_lowpoly:Mesh").gameObject.GetComponent<Renderer>().material = transform.Find("Glen").Find("gladiator_lowpoly:Mesh").gameObject.GetComponent<Renderer>().material;
@@ -32,8 +47,6 @@ public class PlayerDeathLogic : MonoBehaviour {
 
             if (m_lives > 0)
                 Invoke("Respawn", m_respawnTime);
-            else
-                GameOver();
         }
     }
 
@@ -53,10 +66,4 @@ public class PlayerDeathLogic : MonoBehaviour {
         gameObject.layer = LayerMask.NameToLayer("Default");
         m_invincible = false;
     }
-
-    void GameOver()
-    {
-
-    }
-
 }
