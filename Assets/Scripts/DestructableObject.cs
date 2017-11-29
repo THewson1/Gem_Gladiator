@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestructableObject : MonoBehaviour {
 
     [Tooltip("Add objects in the order that they will be destroyed")]
-    public List<GameObject> m_parts;
+    public List<GameObject> m_parts = null;
     public List<string> m_tagsThatDestroyThis;
     public float m_breakAwayForce;
     public float m_partLifetime;
@@ -15,11 +15,12 @@ public class DestructableObject : MonoBehaviour {
     // Use this for initialization
     void Start () {
         m_audioSource = GetComponent<AudioSource>();
-
-        for (int i = 0; i < m_parts.Count; i ++)
+        if (m_parts != null)
         {
-            if (m_parts[i])
+            for (int i = 0; i < m_parts.Count; i++)
+            {
                 m_parts[i].AddComponent<Rigidbody>().isKinematic = true;
+            }
         }
 	}
     
