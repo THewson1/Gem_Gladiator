@@ -13,9 +13,10 @@ public class GivePowerupAfterAmountOfGems : MonoBehaviour {
         int playerToGetPowerup = -1;
         foreach(KeyValuePair<int, int> playernumber in gameController.m_amountOfGems)
         {
-            if (playernumber.Value > m_requiredAmountOfGems)
+            if (playernumber.Value >= m_requiredAmountOfGems)
             {
                 playerToGetPowerup = playernumber.Key;
+                gameController.m_amountOfGems[playernumber.Key] = 0;
             }
         }
         if (playerToGetPowerup != -1)
