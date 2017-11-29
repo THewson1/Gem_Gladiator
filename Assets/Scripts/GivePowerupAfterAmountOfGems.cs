@@ -18,30 +18,25 @@ public class GivePowerupAfterAmountOfGems : MonoBehaviour {
     void Update () {
         GameController gc = m_gameController.GetComponent<GameController>();
 
-        int playerToGetPowerup = -1;
-        int pn = -1;
         for (int i = 0; i < gc.m_listOfPlayers.Count; i++)
         {
-            pn = gc.m_listOfPlayers[i].GetComponent<PlayerInput>().m_playerNumber;
-            Debug.Log(gc.m_amountOfGems[pn] + " : PLayer" + pn);
+            int playerToGetPowerup = -1;
+            int pn = gc.m_listOfPlayers[i].GetComponent<PlayerInput>().m_playerNumber;
+
             if (gc.m_amountOfGems[pn] >= m_requiredAmountOfGems)
             {
                 playerToGetPowerup = pn;
                 gc.m_amountOfGems[pn] = 0;
             }
-            else
+
+            if (playerToGetPowerup != -1)
             {
-                pn = -1;
-            }
-        }
-        if (playerToGetPowerup != -1)
-        {
-            for (int i = 0; i < gc.m_listOfPlayers.Count; i ++)
-            {
-                if (gc.m_listOfPlayers[i].GetComponent<PlayerInput>().m_playerNumber == pn)
+                for (int j = 0; j < gc.m_listOfPlayers.Count; j++)
                 {
-                    AddRandomPowerup(gc.m_listOfPlayers[i]);
-                    Debug.Log(gc.m_listOfPlayers[i]);
+                    if (gc.m_listOfPlayers[j].GetComponent<PlayerInput>().m_playerNumber == pn)
+                    {
+                        AddRandomPowerup(gc.m_listOfPlayers[j]);
+                    }
                 }
             }
         }
