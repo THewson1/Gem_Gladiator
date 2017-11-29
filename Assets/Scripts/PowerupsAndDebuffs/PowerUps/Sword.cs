@@ -50,6 +50,7 @@ public class Sword : PowerupOrDebuff
 
     public override void Uninitialize()
     {
+        m_playerDeathLogic = GetComponent<PlayerDeathLogic>();
         // remove sword from character
         if (m_sword != null)
         m_sword.SetActive(false);

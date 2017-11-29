@@ -18,7 +18,8 @@ public class DestructableObject : MonoBehaviour {
 
         for (int i = 0; i < m_parts.Count; i ++)
         {
-            m_parts[i].AddComponent<Rigidbody>().isKinematic = true;
+            if (m_parts[i])
+                m_parts[i].AddComponent<Rigidbody>().isKinematic = true;
         }
 	}
     
