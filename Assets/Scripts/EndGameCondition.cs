@@ -22,6 +22,7 @@ public class EndGameCondition : MonoBehaviour {
 	
     void Start ()
     {
+        // set the gamemode variable to reflect the game mode selected
         if (m_singlePlayer)
             m_gameMode = 1;
         if (m_coop)
@@ -38,6 +39,7 @@ public class EndGameCondition : MonoBehaviour {
             {
                 //single player
                 case (1):
+                    // if the player is dead the game is over
                     foreach (GameObject player in m_players)
                     {
                         if (player.GetComponent<PlayerDeathLogic>().m_lives <= 0)
@@ -47,6 +49,7 @@ public class EndGameCondition : MonoBehaviour {
                 //co-op
                 case (2):
                     m_gameOver = true;
+                    // if at least one player has a life left the game is not over
                     foreach (GameObject player in m_players)
                     {
                         PlayerDeathLogic playerDeathLogic = player.GetComponent<PlayerDeathLogic>();
@@ -59,6 +62,7 @@ public class EndGameCondition : MonoBehaviour {
                     break;
                 //verses
                 case (3):
+                    // if at least one player is dead the game is over and the oposite player wins
                     foreach (GameObject player in m_players)
                     {
                         PlayerDeathLogic playerLogic;
@@ -97,6 +101,9 @@ public class EndGameCondition : MonoBehaviour {
         }
 	}
 
+    /// <summary>
+    /// For use when the game is over and the specified player should not die
+    /// </summary>
     void MakePlayerInvincible(int playerNumber)
     {
         foreach (GameObject player in m_players)
@@ -109,9 +116,13 @@ public class EndGameCondition : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Execute the correct action for the current gamemode when the game is over
+    /// </summary>
     void GameOver() {
         switch (m_gameMode)
         {
+            // calculate the fianl score, go to the game over screen and pause the physics
             case (1):
                 m_finalScore = CalculateFinalScore();
                 Debug.Log(m_finalScore);
@@ -119,6 +130,7 @@ public class EndGameCondition : MonoBehaviour {
                 Time.timeScale = 0;
                 break;
 
+            // calculate the fianl score, go to the game over screen and pause the physics
             case (2):
                 m_finalScore = CalculateFinalScore();
                 Debug.Log(m_finalScore);
@@ -126,20 +138,18 @@ public class EndGameCondition : MonoBehaviour {
                 Time.timeScale = 0;
                 break;
 
+            // Go to the game over screen and pause the physics
             case (3):
-                foreach (GameObject player in m_players)
-                {
-                    if (player.GetComponent<PlayerDeathLogic>().m_lives > 0)
-                    {
-                        // whoever is not dead has won
-                        m_gameOverScreen.SetActive(true);
-                        Time.timeScale = 0;
-                    }
-                }
+                // whoever is not dead has won
+                m_gameOverScreen.SetActive(true);
+                Time.timeScale = 0;
                 break;
         }
     }
 
+    /// <summary>
+    /// Use math to find the correct final score
+    /// </summary>
     public int CalculateFinalScore()
     {
         GameController gC = GetComponent<GameController>();

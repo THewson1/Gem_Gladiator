@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour {
 	void Awake () {
         m_secondsPassed = 0;
         //create the correct amount of players at the start of the game
-
 		for (int i = 0; i < m_amountOfPlayers; i++)
         {
             if (m_amountOfPlayers % 2 != 0)
@@ -44,6 +43,7 @@ public class GameController : MonoBehaviour {
             }
         }
 
+        // spawn the player after "m_boulderSpawnDelay" seconds
         Invoke("SpawnBoulderAfterFalling", m_boulderSpawnDelay);
     }
 
@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour {
     {
         CreateBoulder();
         AddPlayersToBoulderTargets();
+        // enable player movement
         for (int i = 0; i < m_listOfPlayers.Count; i ++)
         {
             m_listOfPlayers[i].GetComponent<PlayerInput>().enabled = true;
@@ -68,6 +69,7 @@ public class GameController : MonoBehaviour {
 
     private void CreatePlayer(int i)
     {
+        // place the player in the correct position
         bool evenNumber = (m_amountOfPlayers % 2 > 0)? false : true;
         float xpos = i - m_amountOfPlayers / 2;
         if (evenNumber)
@@ -75,16 +77,22 @@ public class GameController : MonoBehaviour {
         GameObject newPlayer = Instantiate(m_playerPrefab, new Vector3(xpos, 1, 0) + m_playerSpawnOffset, Quaternion.identity);
         Instantiate(m_playerIcons[i], newPlayer.transform);
         m_listOfPlayers.Add(newPlayer);
+
+        // apply the correct skin for the current player
         newPlayer.transform.Find("Glen").Find("gladiator_lowpoly:Mesh").gameObject.GetComponent<Renderer>().material = m_playerTextures[i];
         PlayerInput pi = newPlayer.GetComponent<PlayerInput>();
         pi.PlayerNumber = i;
         pi.enabled = false;
+        
+        // add the current player to the amount of gems dictionary (tracks the amount of gems for each player)
         m_amountOfGems.Add(i, 0);
+
         // fix floating player
         newPlayer.GetComponent<BounceInternaly>().enabled = false;
         Invoke("EnablePlayerBouncing", 2);
     }
 
+    // enable the code that keeps the player in the arena fo all players
     void EnablePlayerBouncing()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -94,6 +102,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    // enable the code that makes the boulder bounce towars the player
     void EnableBoulderBouncing()
     {
         GameObject[] boulders = GameObject.FindGameObjectsWithTag("Boulder");
@@ -103,6 +112,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    // add the ploayers to the boulders list of things to bounce towards
     private void AddPlayersToBoulderTargets()
     {
         BounceInternaly boulderBouncingScript = GameObject.FindGameObjectWithTag("Boulder").GetComponent<BounceInternaly>();
@@ -112,6 +122,7 @@ public class GameController : MonoBehaviour {
 
     private void Update()
     {
+        // update m_secondsPassed for use later when calculating final score
         if (!GetComponent<EndGameCondition>().m_gameOver)
             m_secondsPassed += Time.deltaTime;
     }

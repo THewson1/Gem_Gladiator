@@ -17,11 +17,14 @@ public class EnterNameUI : MonoBehaviour {
         m_gc = GameObject.FindGameObjectWithTag("GameController");
         m_finalScore = m_gc.GetComponent<EndGameCondition>().m_finalScore;
         m_score.text = m_finalScore.ToString();
-        Debug.Log(m_finalScore);
     }
 	
+    /// <summary>
+    /// Add the current highscore to the highscores file
+    /// </summary>
     public void ApplyHighScore()
     {
+        // if the name is not blank, apply the highscore
         if (m_inputField.text != "")
             m_highscoreUI.GetComponent<HighScoreUI>().AddHighScore(m_inputField.text, m_finalScore);
         m_highscoreUI.SetActive(true);
