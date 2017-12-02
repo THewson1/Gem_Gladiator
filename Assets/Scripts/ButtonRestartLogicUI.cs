@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Button_Restart_Logic_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
+public class ButtonRestartLogicUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
 
     public GameObject m_hand;
     public GameObject m_handToChange;
@@ -17,12 +17,18 @@ public class Button_Restart_Logic_UI : MonoBehaviour, IPointerEnterHandler, IPoi
         Exit();
     }
 
+    /// <summary>
+    /// handles the logic for when this button is selected
+    /// </summary>
     public void Enter()
     {
         m_handToChange.SetActive(false);
         m_hand.SetActive(true);
     }
 
+    /// <summary>
+    /// handles the logic for when this button is un-selected
+    /// </summary>
     public void Exit()
     {
         m_handToChange.SetActive(true);

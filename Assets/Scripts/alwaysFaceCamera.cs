@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class alwaysFaceCamera : MonoBehaviour {
+public class AlwaysFaceCamera : MonoBehaviour {
 
-    Transform mainCamera;
+    Transform m_mainCamera;
 
 	// Use this for initialization
 	void Start () {
-        mainCamera = Camera.main.transform;
+        m_mainCamera = Camera.main.transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.forward = -mainCamera.transform.forward;
+        transform.forward = -m_mainCamera.transform.forward;
 	}
 }
