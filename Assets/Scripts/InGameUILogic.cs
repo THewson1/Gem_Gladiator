@@ -9,7 +9,6 @@ public class InGameUILogic : MonoBehaviour
     public bool m_activatePlayer1;
     public bool m_activatePlayer2;
 
-    public short m_lifeCounter; // this should be an array of heart images
     private int m_seconds;
     private int m_minutes;
 
@@ -31,12 +30,12 @@ public class InGameUILogic : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         GameObject go = GameObject.FindGameObjectWithTag("GameController");
 
         m_gc = go.GetComponent<GameController>();
         m_canvas = GetComponent<Canvas>();
 
+        //enable the correct life images for player 1
         if (m_activatePlayer1)
         {
             for (int i = 0; i != m_player1Lives.Count; i++)
@@ -45,6 +44,7 @@ public class InGameUILogic : MonoBehaviour
             }
         }
 
+        //enable the correct life images for player 2
         if (m_activatePlayer2)
         {
             for (int i = 0; i != m_player2Lives.Count; i++)
@@ -156,19 +156,23 @@ public class InGameUILogic : MonoBehaviour
 
         if (m_activatePlayer1)
         {
+            // get player 1
             foreach (GameObject player in m_gc.m_listOfPlayers)
             {
                 if (player.GetComponent<PlayerInput>().m_playerNumber == 0)
                     thisPlayer = player;
             }
+            // loop through all modifier images on player 1
             modifiers = thisPlayer.GetComponents<PowerupOrDebuff>();
             for (int i = 0; i < m_p1Modifiers.Count; i ++)
             {
+                // if there is still a modifier on th eplayer to display the image for then display it
                 if (i < modifiers.Length)
                 {
                     m_p1Modifiers[i].enabled = true;
                     m_p1Modifiers[i].sprite = modifiers[i].m_image;
                 }
+                // if not hide the current modifier image
                 else
                 {
                     m_p1Modifiers[i].enabled = false;
@@ -177,19 +181,23 @@ public class InGameUILogic : MonoBehaviour
         }
         if (m_activatePlayer2)
         {
+            // get player 1
             foreach (GameObject player in m_gc.m_listOfPlayers)
             {
                 if (player.GetComponent<PlayerInput>().m_playerNumber == 1)
                     thisPlayer = player;
             }
+            // loop through all modifier images on player 1
             modifiers = thisPlayer.GetComponents<PowerupOrDebuff>();
             for (int i = 0; i < m_p2Modifiers.Count; i++)
             {
+                // if there is still a modifier on th eplayer to display the image for then display it
                 if (i < modifiers.Length)
                 {
                     m_p2Modifiers[i].enabled = true;
                     m_p2Modifiers[i].sprite = modifiers[i].m_image;
                 }
+                // if not hide the current modifier image
                 else
                 {
                     m_p2Modifiers[i].enabled = false;

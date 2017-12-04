@@ -16,7 +16,10 @@ public class MaintainVelocity : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        // push the boulder down (fix for flying boulder bug)
         m_rb.AddForce(Vector3.down * m_downwardForce);
+
+        //if the boulder's velocity is less than its target increase its velocity
 		if (m_rb.velocity.magnitude < m_desiredVelocity)
         {
             Vector3 forceToadd = m_rb.velocity.normalized * m_desiredVelocity;

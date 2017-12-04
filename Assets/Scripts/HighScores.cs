@@ -11,6 +11,9 @@ public class HighScores {
     public List<string> m_players = new List<string>();
     public List<int> m_scores = new List<int>();
 
+    /// <summary>
+    /// Saves the current state of HighScores into a .Json file
+    /// </summary>
     public void Save(string fileLocation)
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, fileLocation);
@@ -26,6 +29,9 @@ public class HighScores {
         }
     }
 
+    /// <summary>
+    /// Loads the current state of HighScores from a .Json file
+    /// </summary>
     public HighScores Load(string fileLocation){
         string filePath = Path.Combine(Application.streamingAssetsPath, fileLocation);
         if (File.Exists(filePath))
@@ -47,6 +53,9 @@ public class HighScores {
         }
     }
 
+    /// <summary>
+    /// If the .json file that was found is empty or otherwise "NULL" put the text from that file into a version marked Corrupt
+    /// </summary>
     HighScores FixCorruptHighScores(string fileLocation, string corruptData)
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, "Corrupt HighScores.json");
@@ -63,6 +72,9 @@ public class HighScores {
         return new HighScores();
     }
 
+    /// <summary>
+    /// Add a new highscore to the highscore table
+    /// </summary>
     public void AddHighScore(string name, int score){
         m_players.Add(name);
         m_scores.Add(score);

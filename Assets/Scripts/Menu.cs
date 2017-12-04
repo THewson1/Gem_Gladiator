@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
+
+    /// <summary>
+    /// loads the specified scene and sets time to be normal
+    /// </summary>
     public void LoadSceneByIndex(int sceneIndex) {
         SceneManager.LoadScene(sceneIndex);
         Time.timeScale = 1;
     }
 
+    // Teagan's unused code
     public void LoadCanvasID (int canvasIndex) {
         GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("MenuCanvas");
         foreach(GameObject go in gameObjectArray) {
@@ -42,11 +47,15 @@ public class Menu : MonoBehaviour {
         }
     }
 
+    // Teagan's unused code
     private void NewMenu (string menuToActivate) {
         GameObject newMenu = GameObject.Find(menuToActivate);
         newMenu.SetActive(true);
     }
 
+    /// <summary>
+    /// exit the game
+    /// </summary>
     public void ExitProgram() {
         Application.Quit();
     }

@@ -27,6 +27,7 @@ public class MilestoneLogic : MonoBehaviour {
                 amountOfGems += player.Value;
             }
 
+            // If the number of gems to reach is reached spawn the Milestone object
             if (!m_repeating && amountOfGems >= m_numberOfGemsToReach)
             {
                 foreach (Transform location in m_spawnLocations)
@@ -36,6 +37,7 @@ public class MilestoneLogic : MonoBehaviour {
                 return;
             }
 
+            // If the number of gems to reach is reached spawn the Milestone object (repeating)
             if (m_repeating && amountOfGems - m_lastMilestoneHit >= m_numberOfGemsToReach)
             {
                 m_lastMilestoneHit = amountOfGems;
@@ -47,6 +49,9 @@ public class MilestoneLogic : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Spawn milestone object
+    /// </summary>
     void SpawnObjects(Transform location)
     {
         GameObject objectToSpawn = Instantiate(m_objectToSpawn, location);
